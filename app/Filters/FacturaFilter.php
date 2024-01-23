@@ -11,6 +11,7 @@ class FacturaFilter extends ApiFilter{
         'CFMANUMERO' => ['eq'],
         'PERIODO' => ['eq'],
         'DFMAFECHA' => ['eq'],
+        'LOCAL' => ['eq'],
         'CCTECODIGO' => ['eq','gt','lt'],
 
     ];
