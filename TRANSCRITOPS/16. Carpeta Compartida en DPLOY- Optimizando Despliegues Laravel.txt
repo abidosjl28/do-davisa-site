@@ -1,0 +1,123 @@
+En este capítulo vamos a hablar sobre el módulo compartido, que es esta carpeta llamada
+chat, pero antes de hablar sobre él, quiero ponerles en contexto. Cuando nosotros queremos
+subir archivos a nuestro servidor desde el árabe, lo primero que tenemos que hacer
+es escoger el disco en el que queremos que se suba, donde escogemos el disco dirigiéndonos
+a nuestra variable en torno, buscando esta variable llamada fileSystemDisk y aquí
+escogemos. Podríamos escoger por ejemplo el disco público, el disco local o por
+ejemplo el disco S3. Centrémonos en el disco public, que es el disco más común donde
+solemos subir nuestros archivos. Si escogemos public, lo que va a hacer la variable cuando
+intentemos subir un archivo, es que ese archivo lo va a subir en la siguiente carpeta,
+lo va a subir en la carpeta storage, lo va a subir en la carpeta app y en la carpeta
+public. Aquí va a empezar a subir todos estos archivos. Ahora, el detalle es que
+si lo suben a esta carpeta, nosotros no vamos a poder acceder a estos archivos desde
+el navegador. Desde el proyecto mismo sí lo podemos acceder, pero desde el navegador
+no vamos a poder acceder a ellos. ¿Por qué? Porque el navegador solo puede acceder
+a aquellos archivos que se colocan en esta carpeta, en la carpeta public. Puede
+acceder a esta carpeta llamada img. Si colocamos por acá de repente archivos css,
+js, va a poder acceder. ¿Por qué? Porque se encuentra en la carpeta public, pero los
+que se encuentran fuera no. Entonces, ¿cómo podríamos acceder a aquellos archivos que
+hemos subido en el disco public? Lo que hacemos en este caso es generar dentro de
+la carpeta public un acceso directo hacia esta carpeta, hacia la carpeta storage y
+¿cómo lo generamos? Ejecutando el siguiente comando, el comando php artisan storage
+2.link. Y listo. Ahora, dentro de la carpeta public aparece una carpeta llamada storage
+con este símbolo que tenemos acá. Este símbolo lo que indica es que es un acceso
+directo. Acá hay un vínculo simbólico que si nosotros abrimos, miren, acá podemos
+encontrar todos aquellos archivos que teníamos en esa carpeta. Y en mi caso para hacer
+pruebas yo agregué ese archivo llamado prueba.txt que justamente aparece acá. Entonces,
+esa es la manera en la cual nosotros podemos acceder a esos archivos que se suben
+con Laravel. Entonces, dicho esto, quiero hacer lo siguiente. Vamos a dirigirnos
+aquí a nuestra carpeta deployed. Vamos a abrir este llamado config.iml y vamos
+a agregar un comando más. Aparte de todos los que tenemos acá, quiero agregar uno
+más. Quiero que luego de clonar mi repositorio, lo que haga es ejecutar el comando php
+artisan storage 2.link y le vamos a dar en guardar que como vimos hace un momento
+lo que hace es generarme el link simbólico. Listo, ya le dimos guardar. Y ahora volvemos
+por acá. Seguramente no me deja. Vamos a cerrarlo y volver a ingresar. Ingreso
+Vamos a ejecutar una vez más el deploy. Ejecutar deploy deploy master. Le vamos a
+dar enter y va a iniciar el proceso. Ahora, va a hacer todo lo mismo que hizo anteriormente,
+es decir, me va a clonar, va a instalar composer, va a almacenar estos archivos,
+pero ahora también me va a generar el link simbólico. Por acá lo tenemos.
+Genera un link simbólico hacia la carpeta storage app public. Perfecto. Vamos a esperar
+un momento que termine este proceso. Muy bien, ya terminó. Ahora volvamos nuevamente
+por acá. Dirijámonos al administrador de archivos. Vamos a dirigirnos a la carpeta
+htdocs, facturación web, current, que es la última implementación que se ocurrió.
+Y si ingresamos a la carpeta public, por acá encontramos el acceso directo a la carpeta
+storage. Este es un acceso directo. Muy bien. Ahora, ¿cuál es el problema? El problema es el
+siguiente. Nosotros podemos empezar a subir archivos acá. Por ejemplo, le voy a dar
+en añadir un nuevo archivo que se llame newfile.txt. Acá lo tenemos y empezamos a
+subir, subiendo archivos a nuestro proyecto. Si ingreso a storage app public, acá tenemos
+justamente el archivo que subí, confirmando que se trataba de un acceso directo. Ya, pero
+menciono, ¿cuál es el problema? Imaginemos que ya subimos 100 archivos y luego decidimos
+actualizar el repositorio, generar nuevamente un deploy. Lo dirigimos por acá, ejecutamos
+nuevamente ese comando, se empieza a clonar nuevamente y instalarlo todo de nuevo. Ojo
+a lo que acabo de decir, se clona nuevamente. Al clonarse nuevamente, lo que va a ocurrir
+es que se va a clonar tal cual lo tenemos en el repositorio. Y si ingresamos a
+nuestro repositorio, que se llama facturacionweb.p, vamos a darnos cuenta que justamente
+en la carpeta storage app public no tenemos ningún archivo. Entonces, cuando lo clone,
+tampoco va a tener ningún archivo. Y se podría decir que hemos perdido todos aquellos
+archivos que habíamos subido previamente. No se ha perdido en sí, sigue estando ahí,
+pero está en la implementación anterior. Ingreso a htdocs, facturación web, relaces.
+Sé que acá, en esta carpeta, en el master, debería estar la carpeta storage y los
+archivos que yo subí. Solo que ahora ya no estamos abriendo esta implementación,
+sino que estamos abriendo esta otra. Y en esta otra, sí hay un acceso directo
+a la carpeta storage, pero esta está vacía. Entonces, lo que nosotros tendríamos que hacer
+Los archivos que nosotros subamos no quiero que se suban en las implementaciones. ¿Por qué?
+Porque va a ocurrir justamente ese problema. Va a ocurrir el problema de que se haga una
+nueva implementación. Esa nueva implementación no va a tener acceso a los archivos anteriores,
+a los archivos que subimos anteriormente. Entonces, lo que tendríamos que hacer es esto.
+Yo quiero que todos esos archivos se suban dentro de esta carpeta llamada
+Acá, por ejemplo, tenemos una carpeta llamada storage. Perfecto. Y dentro de esta carpeta
+llamada storage vamos a crear la estructura de carpetas que normalmente trabajamos.
+¿Qué estructura de carpetas me refiero a esta? La carpeta storage, app y public.
+Entonces, me voy a dirigir por acá y voy a decir ok, quiero crear una carpeta.
+Esta carpeta se va a llamar app y dentro de esta carpeta quiero generar una nueva carpeta
+y esta se va a llamar public. Perfecto. Entonces, a mí me interesaría que todos
+los archivos indistintamente de la implementación en la cual yo me encuentre,
+los suba acá a la carpeta storage, a la carpeta app y a la carpeta public.
+Para lograr que ocurra eso, tendríamos que volver nuevamente hacia nuestro archivo,
+a nuestra carpeta .deployed.config.iml y especificar que utilice esa carpeta
+que creé en el capítulo pasado como una carpeta compartida. Entonces, tendría que
+centrarme en esta parte que tenemos acá. Aquí, como podemos ver, ya han agregado
+una carpeta compartida, que también es la carpeta storage, pero es la carpeta logs.
+¿Para qué? Para que todas las implementaciones compartan los mismos logs.
+Pues ahora vamos a agregar una carpeta adicional. Vamos a darle un control C,
+vamos a darle un control B y vamos a decir que vamos a tener dos carpetas compartidas,
+storage logs y storage app. Guardamos los cambios.
+Ahora, ¿qué logro con esto? Lo que voy a lograr es lo siguiente,
+que la próxima vez que realice un deploy, cuando clone el repositorio,
+va a clonar todo, pero esta carpeta, la carpeta que tenemos dentro de storage app,
+va a ser reemplazado, es decir, no va a tomar, va a eliminar esta carpeta y
+va a ser reemplazado por un acceso directo hacia la carpeta
+y de esa manera, como menciono, todos los archivos que nosotros subamos,
+indistintamente del despliegue en el cual nos encontremos,
+se van a subir en esta carpeta. Entonces, quiero comprobarlo.
+Vamos a hacer un nuevo despliegue. Vamos a hacer dos despliegue para ver que se
+mantengan los archivos que estamos subiendo. Me dirijo por acá, ejecuto,
+ingreso por ssh, ejecuto el comando deploy deploy master y le damos enter.
+Y voy a esperar un momento a que termine la implementación.
+Ya terminó la implementación. Entonces, vamos a actualizar esto,
+administración de archivos, nos vamos a la carpeta htdocs, facturación web,
+ingresamos a la última implementación, la carpeta current, nos vamos a la carpeta public.
+Si ingreso a la carpeta storage, como menciono,
+ésta se supone que es un acceso directo hacia la carpeta compartida.
+Le voy a dar click, acá lo tenemos y vamos a ingresar o vamos a crear un nuevo archivo,
+un nuevo archivo que se llame prueba.txt. Listo, ya lo creamos.
+Para verificar que en efecto se trata de un acceso directo y no de una carpeta,
+vamos nuevamente a facturación web.p, vamos a ingresar a la carpeta charred,
+vamos a ingresar a la carpeta storage, public y acá también tenemos el archivo prueba.txt.
+Entonces se está almacenando en la carpeta compartida.
+Muy bien, hagamos una nueva implementación para verificar que en efecto todas las
+implementaciones van a tener acceso a esa carpeta.
+Nuevamente hago la implementación y voy a esperar otro momento más.
+Listo, la implementación ya terminó, entonces comprobémoslo.
+Nuevamente, administrador de archivos, carpeta htdocs, facturación web,
+ingresamos a la última implementación, ingresamos a la carpeta public,
+storage y como vemos tenemos acceso a los archivos. Perfecto.
+Entonces con eso ya hemos terminado con la explicación de la carpeta compartida.
+En el caso de que tú necesites tener otra carpeta compartida,
+ya sabes dónde colocarlo, en la carpeta charred y a la hora de implementación,
+deploy se va a encargar de modificar la carpeta original por un acceso directo.
+Perfecto. En el próximo capítulo lo que vamos a ver es cómo automatizar esto.
+Hasta el momento, si yo hago una modificación en mi proyecto,
+tengo que dirigirme, conectarme por ssh y volver a ejecutar este comando.
+Yo quiero que simplemente con el hecho de actualizar mi repositorio se ejecute
+el comando acá de manera automática. Entonces eso vamos a verlo en el próximo capítulo.

@@ -1,0 +1,198 @@
+En este capítulo lo que quiero hacer es poner en cola este trabajo.
+Para ponerlo en cola, lo que vamos a hacer es crear un job.
+Vamos a ir cerrando todo esto y me gustaría hacer esto.
+Buscar Laravel, la documentación de Laravel.
+Una vez que estamos acá, vamos a buscar los jobs.
+Lo que tenemos que crear es un job.
+Primero, antes de nada, vamos a configurar nuestro proyecto para trabajar con colas.
+Para trabajar con colas, nosotros tenemos que escoger un driver.
+El driver con el cual queremos utilizar.
+Este puede ser Database, Redis, entre otros.
+El driver que nosotros vamos a utilizar es Database.
+¿Por qué? Porque es más sencillo de configurar.
+Lo único que tendríamos que hacer para utilizar ese driver en nuestros trabajos en cola
+es dirigirnos a nuestra variable de entorno, punto em.
+Y una vez que estamos acá, buscar este que dice Qconnection.
+Y cambiar este valor de sync por Database.
+Entonces, vamos a copiarlo y lo pegamos por acá.
+Con eso especificamos que la forma en la cual vamos a trabajar en cola
+es guardando registros en una tabla de nuestra base de datos.
+Ahora, para que este driver funcione correctamente,
+lo que tenemos que hacer es crear las tablas.
+Las tablas en las cuales se van a almacenar.
+Para crear esas tablas, tenemos que abrir la terminal y ejecutar el siguiente comando.
+El comando php artisan q w.
+Lo que va a hacer ese comando es crearme unas cuantas migraciones.
+Acá lo tenemos.
+Y entonces el siguiente paso sería correr las migraciones para que se crea la tabla.
+Voy a copiar el comando acá y ejecuto php artisan migrate.
+Listo. Con eso ya tendría el configurado para trabajar con Qs en el proyecto.
+Claro que la configuración de mi proyecto en local debería ser la misma que de producción.
+Entonces, lo que vamos a hacer es dirigirnos a nuestro Cloud Panel.
+Vamos a dirigirnos a nuestra carpeta Deployed.
+Vamos a abrir esta carpeta que se llama Overlays.
+Y vamos a modificar nuestra variable de entorno.
+Acá de igual manera, tengo que reemplazar el valor de esa variable q connectio.
+Vamos a pegarlo por esto y le damos en guardar.
+Listo. Ya podríamos continuar.
+El próximo paso, una vez que ya tenemos configurado los Qs, es crear un job.
+Para crear un job, me dice que ejecute el siguiente comando.
+Abre la terminal y ejecute este php artisan make job.
+¿Qué más? Vamos a darle un nombre.
+El nombre que le voy a dar va a ser git hub webhook.
+Y le vamos a dar enter.
+Ahora, ¿qué va a hacer este comando?
+Ese comando me ha creado una nueva clase
+y la clase la he colocado dentro de la carpeta app, dentro de la carpeta jobs
+y acá tenemos el archivo llamado git hub webhook.
+Ahora, estas clases que tenemos acá,
+las clases vienen implementadas con una interfaz.
+La interfaz show chill queue.
+Ahora, este interfaz lo que hace es que cualquier cosa que nosotros coloquemos acá
+no lo va a ejecutar de inmediato, sino que lo va a colocar en cola.
+Es decir, lo va a colocar para ser ejecutado en un momento posterior.
+Es ideal trabajar con esto cuando estamos trabajando con tareas muy pesadas.
+Entonces, lo que voy a hacer es dirigirme a mi webhook controller
+y vamos a copiar todo esto, ya que eso es el trabajo pesado
+que quiero que se ejecute en un segundo plano.
+Vamos a darle un control C, voy a dirigirlo por acá
+y le vamos a dar un control V.
+Ahora, una vez que hemos hecho eso,
+vamos a dirigirnos a nuestro controlador y vamos a llamar a ese trabajo.
+¿Cómo llamamos a ese trabajo? De la siguiente manera.
+Simplemente hacemos referencia a la clase.
+Nos aseguramos de importar su definición.
+En mi caso, yo le voy a dar Enter para importarlo.
+Y vamos a ejecutar el método dispatch.
+Entonces, perfecto. Verifica la contraseña.
+Si pasa, se ejecute este trabajo y se retorna este mensaje.
+Eso sería todo lo que tenemos que hacer.
+Para comprobar que todo esté funcionando correctamente,
+me gustaría, por un momento, en primer lugar, apagar mi webhook
+porque primero quiero que se actualice en mi servidor.
+Vamos a dirigirnos por acá, en Settings, vamos a dirigirnos a Webhook,
+vamos a editar esto y vamos a deshabilitarlo momentáneamente.
+Muy bien. Procedamos a actualizar nuestro repositorio.
+Vamos a actualizarlo. Vamos a escribir git push origin master.
+Le damos Enter.
+Y el repositorio ya se actualizó. Perfecto.
+Vamos a actualizarlo en nuestro servidor.
+Ingreso. Ejecutamos el comando deploy.
+Deploy master. Le damos Enter.
+Se empieza a clonar nuevamente.
+Muy bien. Ya terminó de clonarse.
+Vamos a verificar que en efecto los cambios se habían reflejado acá.
+Nos vamos a Administración de archivos.
+Nos vamos a la carpeta htdocs, facturación web.
+Ingresamos a la carpeta current.
+Primero verifiquemos nuestro controlador, app, http, controllers.
+Ingresamos a Webhook controllers.
+Vemos que en efecto está llamando a mi trabajo, a mi job.
+Y ahora vamos a revisar si tenemos el job.
+Ingresamos a la carpeta app.
+Ingresamos a Job.
+Y el job es el que está haciendo ese trabajo.
+Muy bien.
+¿Qué más quiero hacer? Quiero verificar mi variable en torno.
+Para ver que funcione todo correctamente.
+Me dirijo a Current.
+Ingresamos aquí, .em.
+Voy a verificar que en Qconnection está generado con database.
+Ahora, hemos generado nuevas migraciones.
+Esas migraciones esperaría que también se hayan generado.
+Entonces, esas tablas vamos a dirigirnos a nuestra carpeta, a nuestra base de datos.
+Vamos a administrarla.
+Y esperaría que existan dos nuevas tablas.
+Una tabla llamada Job y otra tabla llamada FileJobs.
+La tabla FileJobs, acá lo tenemos.
+Aquí empezaría a salir todos aquellos trabajos fallidos.
+Y por acá tenemos la tabla Jobs, que es donde se van a almacenar nuestras colas.
+Perfecto.
+Entonces, en apariencia todo funciona correctamente.
+Ahora sí, volvamos a activar nuestro webcube.
+Vamos a darle acá.
+Y ya tenemos.
+Ahora, se supone que cuando webcube se comunique con mi proyecto,
+ya no se va a demorar ejecutando esto, ya que esto se va a colocar en cola.
+Y automáticamente va a recibir esta respuesta.
+Y por lo tanto aquí debería aparecer un check,
+que ha recibido una respuesta satisfactoriamente.
+Entonces, probémoslo.
+Me dirijo acá y volvamos a eliminar este etiqueta P.
+En mi proyecto local ya no debería verlo.
+Y procedamos a ejecutar nuestro, o actualizar nuestro, repositorio.
+Me dirijo por acá, coloco git add-a git commit-m actualización.
+Y vamos a colocar por acá un git push u origin master.
+Y vamos a esperar que se actualice.
+Muy bien.
+Se supone que ahora ya se hizo la petición.
+Y vamos a ver qué ocurre acá en nuestro webcube.
+Vamos a actualizarlo.
+Y miren, ahora aparece un check.
+Significa que ahora sí ha recibido una respuesta de parte de mi servidor.
+Y si analizamos esto, le damos click, damos respuesta.
+Es una respuesta 200 con el mensaje webcube recibido.
+Que justamente fue el mensaje que yo especificé acá, ¿no es cierto?
+Entonces se logra comunicar con mi servidor y logra obtener una respuesta.
+No obstante, si volvemos acá y actualizo el de facturación web.p
+Veo que el cambio no lo veo reflejado.
+¿Por qué no lo veo reflejado?
+Porque recuerden que lo que hemos hecho nosotros es que esta acción lo hemos colocado en cola.
+Si nos vamos a nuestra base de datos nuevamente a la tabla de jobs y actualizo.
+Acá está ese trabajo.
+Está a la espera de ser ejecutado.
+En la documentación me dice que para yo poder ejecutar mis trabajos en cola.
+Lo que tengo que hacer es ejecutar este comando.
+El comando php artisan q work.
+Entonces lo que yo debería hacer es lo siguiente.
+Debería conectarme a mi proyecto.
+En este caso vamos a iniciar sesión como usuario de sitio ssh facturación web.
+Vamos a ingresar a la carpeta htdocs.
+Vamos a ingresar a la carpeta facturación web.p.
+Y me interesa ingresar a la carpeta correct.
+Perfecto.
+Yo en este momento ya me encuentro en mi proyecto.
+Entonces en este punto lo que yo debería hacer es ejecutar este comando.
+El comando php artisan q work.
+Y este comando lo que va a hacer es ver todos los trabajos que tenemos en cola.
+Y los va a ir ejecutando uno a uno.
+En consecuencia va a ser un nuevo despliegue.
+Porque acá se indica que se haga un nuevo despliegue.
+Entonces verifiquemos.
+Le voy a dar enter.
+Acá me dice que se está ejecutando.
+Y en unos 30 segundos aproximadamente vamos a ver que este proceso ya culminó.
+Muy bien.
+Acá me indica que ya terminó de ejecutarse.
+Entonces yo ya podría volver acá.
+Actualizar y ver que se ha actualizado correctamente.
+Ahora hagamos esto.
+Por aquí voy a colocar nuevamente una actualización.
+Voy a colocar no sé Laravel.
+Actualicemos nuestro repositorio.
+git add-a git commit-m actualización.
+Y git push u origin master.
+Le damos enter.
+Se empieza a actualizar.
+Si revisamos nuestro webhook.
+Acá.
+Este sigue teniendo un check.
+Los dos últimos se han entregado correctamente.
+Y acá en segundo plano se está ejecutando nuevamente mi tarea que puse en cola.
+Entonces ya vamos agilizando todo esto.
+Pero ¿cuál es el problema?
+Yo ahorita he entrado, me he conectado por SSH.
+Y he ejecutado el comando php artisan qwork.
+Pero si yo cierro esto.
+Ahí ya terminó de cargarse.
+Si yo lo cierro.
+Este comando el php artisan qwork va a dejar de funcionar también.
+Y por lo tanto todas las tareas se van a empezar a acumular acá.
+Así como estaba hace un momento se van a empezar a acumular.
+Entonces lo que nosotros deberíamos lograr.
+Es que el comando php artisan qwork se sigue ejecutando.
+Sin la necesidad de que nosotros tengamos abierto una terminal.
+Porque de lo contrario tendríamos que dejarla abierta toda la vida.
+Entonces eso vamos a ver en el próximo capítulo.
+Vamos a ver cómo podemos hacer para que el comando php artisan qwork se mantenga ejecutando.
+Sin importar que la terminal está abierta o no.

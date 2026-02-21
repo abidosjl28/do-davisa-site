@@ -1,0 +1,28 @@
+Hola qué tal amigos, en este curso vamos a ver cómo nosotros podemos
+desplegar nuestro proyecto Laravel a un servidor, sea éste un hosting compartido o un VPS
+pero antes de empezar a explicar el proceso de despliegue me gustaría hablar sobre las diferencias
+de cuándo convendría utilizar uno y cuándo convendría utilizar el otro. Empecemos por el
+precio, un hosting compartido es mucho más económico que un VPS y esa es la razón por
+lo cual muchas personas optan por los hosting compartidos pero vayamos más allá del precio
+cuándo te convendría utilizar un hosting compartido en el caso de que por ejemplo
+tú tengas una aplicación web que lo último que necesita para poder funcionar correctamente es
+que tengas una máquina en la cual esté instalado php y una conexión a una base de datos
+entonces en ese caso los hosting compartidos son tu mejor opción. Al contratar un hosting
+compartido se te da un espacio en el cual tienes instalado php, a veces no muy yes,
+depende del hosting en el cual contratas y te dan una conexión a una base de datos. Por
+otro lado en el caso de que para que tu aplicación web funcione correctamente tienes
+que instalar varias herramientas en tu servidor, en ese caso vas a necesitar un VPS,
+¿por qué? Porque en los hosting compartidos tú no vas a poder instalar absolutamente nada,
+tú solo vas a poder depender de tu espacio con tu instalación de php y tu conexión a la base
+de datos. Imaginemos que tú estás trabajando con trabajos en cola y en el cual tú tienes
+que dejar corriendo el comando php artisan qwork. Al no tener un control de cómo
+funciona tu servidor no podrías dejarlo implementado y por lo tanto en los hosting
+compartidos por ejemplo no podrías trabajar con colas. Entre muchas otras cosas que
+que va a depender mucho de qué tipo de proyecto es el que tengas o estés intentando
+desplegar. Con un VPS tú vas a tener el control total de cómo funciona tu servidor,
+mientras que en el hosting compartido tú solo vas a poder subir tu proyecto y sabiendo que
+solo tienes instalado php y una conexión a la base de datos. Entonces en este curso te
+voy a enseñar ambas, te voy a enseñar cómo utilizar o cómo desplegar tu proyecto en un
+también te voy a enseñar cómo desplegar tu proyecto en un VPS. Y nada más eso sería
+todo por este capítulo, en el próximo capítulo vamos a ver cómo podemos subir
+nuestro proyecto a un hosting compartido en GoodDaddy.

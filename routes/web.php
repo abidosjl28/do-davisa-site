@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\UploadController::class, 'index']);
+Route::post('/doupload', [\App\Http\Controllers\UploadController::class, 'upload'])->name('doupload');
+Route::get('/documento/{file}', [\App\Http\Controllers\UploadController::class,
+'documento'])->name('documento');
+Route::get('/check/{file}', [\App\Http\Controllers\UploadController::class,
+'check'])->name('check');
+Route::get('/check_cdr/{file}', [\App\Http\Controllers\UploadController::class,
+'check_cdr'])->name('check_cdr');
+Route::get('/documento_xml/{file}', [\App\Http\Controllers\UploadController::class,
+'documento_xml'])->name('documento_xml');
+Route::get('/check_xml/{file}', [\App\Http\Controllers\UploadController::class,
+'check_xml'])->name('check_xml');
+Route::get('/documento_cdr/{file}', [\App\Http\Controllers\UploadController::class,
+'documento_cdr'])->name('documento_cdr');
+
+

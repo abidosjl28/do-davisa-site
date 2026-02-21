@@ -1,0 +1,81 @@
+En este capítulo quiero ver cómo nosotros podemos desplegar nuestro
+proyecto a Laravel utilizando el administrador de archivos que nos
+proporciona Cloud Panel, para lo cual me encuentro en la sección de sitios y
+vamos a administrar el sitio que creamos en capítulo pasado, le voy a dar click
+en administrar y quiero dirigirme al administrador de archivos, perfecto.
+¿En qué parte tenemos que subir nuestro proyecto? Si revisamos nuevamente la
+configuración de nuestro sitio dice que el directorio root es el que se
+encuentra dentro de home, facturación web, htdocs, facturación web.p, public, es
+decir el directorio root sería el siguiente, me voy a dirigir a la
+carpeta htdocs, me voy a dirigir a la carpeta facturación web y voy a
+dirigirme a esta carpeta llamada public, este o aquí en esta carpeta
+deberíamos colocar nuestro archivo index.php que es el que se va a abrir.
+Para este punto ya se debería haber configurado o refrescado los DNS, así
+que quiero que vean lo siguiente, si yo ingreso a mi sitio web que es el que
+tengo acá, me aparece este mensaje que no la condición es privada porque en
+efecto todavía no hemos configurado ningún certificado de SSL, vamos a darle
+en continuar a facturación web y miren se ve este archivo, este
+archivo llamado hello world, ¿por qué se ve esto? porque si abrimos este
+archivo llamado index.php vamos a ver que acá justamente se va a pedir que se
+imprime en pantalla el mensaje hello world, entonces la forma de
+desplegarlo sería de una manera similar a lo que hicimos en el
+hosting, dirigirnos aquí a facturación web.p y por acá mover
+nuestro proyecto comprimido, dicho proyecto comprimido yo ya lo
+tengo de los vídeos pasados, lo tengo dentro de la carpeta
+facturación web y lo tenemos acá, entonces simplemente vamos a moverlo, lo
+jalo y miren por acá se va cargando, simplemente tendría que esperar a que
+termine de cargar, listo ya cargó y ahora vamos a descomprimir esto, clic
+derecho y le vamos a dar en extraer, ¿dónde quiero extraerlo? en este
+directorio RAIS, entonces vamos a colocar un SLASH y le voy a dar
+y vamos a esperar a que se extraiga, listo ya tenemos toda la estructura en
+nuestro proyecto, acá si no tenemos que modificar nada porque hemos visto
+que el directorio root es public y justamente en public se va a colocar mi
+archivo index.php, aunque miren yo estoy viendo por acá que
+aunque vamos a refrescarlo, sí en efecto simplemente refrescando y
+el directorio último que he creado, se supone que el archivo index se debe
+haber modificado por el propio de Laravel, listo, entonces ya tenemos
+nuestro proyecto ya se encuentra subido en la carpeta que
+esperamos, lo que nos faltaría sería configurar nuestra base de datos, para
+configurar la base de datos vamos a dirigirnos aquí al que dice base
+de datos, vamos a darle clic derecho a abrir en una carpeta adicional y
+vamos a añadir una nueva base de datos, le voy a dar añadir base de datos, voy
+a decir que esta base de datos se va a llamar facturación web que es el que
+tenemos acá y vamos a crear un usuario, por ejemplo mi usuario de la base
+de datos va a ser Victor y quiero dejar este valor por defecto, esa
+contraseña por defecto, entonces veamos, antes de crearlo vamos a
+dirigirnos a nuestra variable de entorno, a nuestro proyecto, vamos a
+modificar nuestra variable de entorno .m y por aquí vamos a decir ok la base
+de datos con la cual se va a conectar va a ser facturación web, en efecto
+esa es la base de datos que estoy creando, el usuario que vamos a
+crear para que administre esa base de datos se va a llamar Victor y la
+contraseña de esa base de datos va a ser la que tenemos acá, me dirijo
+por acá y por si es que hay caracteres extraños vamos a colocarla entre
+comillas, muy bien que otra cosa quiero modificar, quiero modificar la url a la
+cual se va a conectar, quiero que sea facturación web.p, vamos a decir que
+que nos encontramos en un entorno en producción, entonces por acá coloco
+production y que se apague el debug y le damos en files
+y simplemente guardamos los cambios, ya tenemos los cambios guardados
+todavía no he generado la base de datos entonces vamos a añadir la base
+de datos, espero un momento a que se cree, se creó la base de datos y
+vamos a poder administrar la base de datos a través de phpMyAdmin, de
+clic en administrar y se va a conectar con el usuario que hemos creado, le voy a
+administrar, voy a esperar un momento y lo que debe ocurrir es que se abre
+phpMyAdmin con la base de datos que se le asignó a ese usuario, perfecto
+ahora simplemente tendríamos que importar la base de datos
+para importarlo me voy a dirigir acá donde hice seleccionar archivos, yo
+le había exportado antes, es el de acá, le voy a dar en cargar y le damos en
+importar, espero un momento
+y listo, ya lo tenemos acá, toda la estructura, entonces ya hemos subido
+nuestros archivos, los archivos que necesitamos y también lo que hemos
+hecho es colocar las credenciales para que se conecte la base de datos
+así que en teoría ya debería funcionar, entonces vamos a ver, ya
+actualizo y lo que debería ver sería mi proyecto Laravel, acá lo tenemos, si le doy en login
+me redirige a login y si le doy en register me redirige a register, quiero iniciar
+sesión, le voy a dar en victor arroba coders free y mi contraseño, le doy en
+mantener iniciar sesión y acá tengo lo siguiente
+ahora el problema que tengo acá, si bien es cierto, lo estoy visualizando, miren que
+mi javascript que he implementado no está funcionando, si le doy en
+inspeccionar, acá me debería marcar varios errores, me dice que no está
+logrando poder recuperar estos assets que tenemos acá, así que esto
+vamos a tener que ver la forma de solucionarlo, pero para no mezclar
+capítulos quiero ver cómo solucionarlo eso en el próximo capítulo

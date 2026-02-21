@@ -1,0 +1,68 @@
+En el capítulo pasado nosotros vimos cómo podíamos desplegar nuestro proyecto Laravel utilizando el administrador de archivos que nos proporciona CloudPanel
+No obstante, a mi parecer, esa no es la mejor forma de desplegarla
+Quizás cuando sea la primera vez que sube su proyecto no haya mayor complicación
+¿Por qué? Porque lo comprimes, lo subes y ya está
+Pero sucede que cuando tenemos un proyecto vamos a estar haciéndole cambios constantemente
+Y por cada cambio que queramos hacer, tener que volver a comprimirlo, descomprimirlo y demás
+Va a ser bastante arduo
+La mejor forma para mí de desplegar un proyecto es subir nuestro proyecto a un repositorio en GitCube
+Y una vez que lo hayamos subido, sincronizar ese repositorio con nuestro servidor
+De tal forma que si actualizamos el repositorio también se actualice en nuestro servidor
+Entonces, en este capítulo lo que vamos a ver es cómo nosotros podemos subir nuestro proyecto a un repositorio en GitCube
+Lo primero que tenemos que hacer para poder subir o crear un repositorio es tener una cuenta en GitCube
+Yo ya la tengo y voy a suponer que tú también ya lo tienes
+Lo próximo, lo que yo tendría que hacer es darle permiso a mi cuenta
+Para poder subir repositorios desde mi computadora
+Y cómo le voy a dar esos permisos? De una manera similar a la que le dimos permisos a nuestra computadora
+Para poder conectarse a mi servidor
+Y es generando una llave SSH y una vez que generamos esa llave se la proporcionamos a GitCube
+¿Cómo generábamos nuestra llave? o ¿Cómo la copiábamos?
+Simplemente ejecutando este comando, ¿no es cierto?
+Entonces, ejecutanlo y esto va a hacer que se copie la llave SSH en su portapapeles
+Una vez que ya se copió, diríjense a esta sección, a la sección que tenemos acá
+Que se llama Setting
+Y una vez que están en Setting, dan click donde dice SSH and... y lo demás, ¿no?
+Denle click
+Y aquí van a agregar las llaves SSH de todas las computadoras que quieres que tengan acceso a tu cuenta de GitCube
+Que pueden subir repositorios o modificarlo
+Muy bien, ¿cómo se agrega? Se agrega new SSHK, le das un nombre identificativo, lo pegas y listo
+De este momento tu computadora ya va a tener permiso para subir archivos a tus repositorios
+Perfecto, lo próximo que vamos a hacer es crear un nuevo repositorio
+Como creo un nuevo repositorio, le doy click acá donde dice new
+Y vamos a darle un nombre, el nombre que yo le voy a dar a mi repositorio va a ser facturacionweb.p
+Y voy a especificar que se trata de un repositorio privado, ¿por qué?
+Porque el contenido de este repositorio no quiero que pueda acceder a ninguna persona
+Una vez que he dado el que es privado, me voy acá donde dice create repositorio
+Y listo, el repositorio ya se creó
+Ahora yo quiero subir toda la estructura de mi proyecto acá
+Para hacer eso simplemente voy a abrir mi proyecto Visual Studio Code, acá lo tengo
+Y le voy a dar en abrir carpeta
+Voy a buscar mi proyecto, se encuentra en c, chan, htdocs, larabel, se llama facturacionweb y lo voy a abrir
+Listo, estando acá, voy a ejecutar el siguiente comando, el comando git init
+Esto va a inicializar git dentro de mi proyecto
+Como vemos, acá reconoce todos aquellos archivos que nos está haciendo seguimiento git
+Perfecto, luego de hacer eso, ¿qué hice?
+Disculpen, voy a agregar esto git add-a para que empiece a hacerle seguimiento a cada uno de los archivos
+Y tenemos que agruparlo en un commit, para agruparlo en un commit vamos a
+Hacer esto, quiero ejecutar el siguiente comando git commit-m y un nombre identificativo
+Como es la primera vez que la opne subir, podríamos darle el nombre de first-comit
+Entonces lo pego y ya está
+Esto ya se encuentra listo para ser subido al repositorio
+Para lo cual, lo primero que tendríamos que hacer es especificarle la url a la cual lo debe subir
+¿Cómo la especifico?
+Colocando este comando, el comando que tenemos acá, me dirijo acá y lo pego
+Con esto ya especificé hacia qué url o hacia qué repositorio se debe subir
+Y finalmente vamos a ejecutar el comando git push-origin master
+Y este es el comando que se va a encargar de subirlo, le doy enter
+Y no era esto, era, disculpen, era git push-u origin master, así era
+Git push-u origin master, le doy enter y listo, se está subiendo
+Ya se subió
+Y si actualizamos, acá vamos a ver la estructura de nuestro proyecto
+Ahora, en el próximo capítulo quiero explicar cómo funciona el proceso de clonación
+Es decir, yo ya lo tengo en el repositorio, pero ¿cómo clono este repositorio?
+Es importante que entiendas el proceso de clonación para que entiendas luego
+el proceso que vamos a hacer en nuestro servidor, así que si es que tú ya conoces
+cómo funciona el proceso de cloning, de repente te puedes saltar este capítulo
+Pero si no te queda claro cómo se clona un repositorio de Laravel
+Sí o sí tienes que ver el capítulo que sigue, así que por el momento nos
+quedamos hasta aquí en este capítulo

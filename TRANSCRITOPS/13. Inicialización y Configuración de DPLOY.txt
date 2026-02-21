@@ -1,0 +1,171 @@
+Muy bien, para poder inicializar Deploy, lo que tenemos que hacer es, ahora, volver
+acá, pero conectarnos ya no como usuario root, el usuario root nos sirvió para poder
+instalar Deploy, pero ahora tenemos que conectarnos como usuario de sitio, acá me refiero
+como usuario de sitio, acá cuando creamos nuestra aplicación, creamos un usuario,
+¿no es cierto?
+¿Cuál es el usuario de sitio?
+facturación web, ese es el nombre que le di, y por acá agregamos previamente también
+la clave ssh, entonces vamos a iniciar sesión como usuario del sitio, aquí voy a colocar
+exit para salir la sesión del usuario root y vamos a volver a hacer una conexión,
+quiero conectarme por ssh a esto mismo ip, pero ahora con el usuario llamado facturación
+web, o el nombre que tú le hayas dado, le damos a enter y listo, de igual manera
+he logrado conectarme al servidor, pero como usuario del sitio, perfecto, una vez
+que ya he hecho eso, lo que me indica que tengo que hacer es ejecutar el comando
+deployed init, este comando deployed init me va a generar un archivo de configuración
+similar al que tenemos acá, pero este programa también me permite poder crear ese archivo
+pero con ciertas plantillas, por ejemplo de forma genérica, o mejor dicho si ejecuto
+deployed init me va a generar un archivo de forma genérica, pero yo quiero que
+me genere un archivo que se adapte para el deploy de Laravel, entonces puedo buscar
+la plantilla Laravel acá, y me dice que lo único que tendría que hacer es ejecutar
+deploy init Laravel y listo, le vamos a dar en copiar, vamos a dirigirnos nuevamente por aquí
+y vamos a pegarlo, le doy deploy init Laravel, enter y por acá me va a hacer algunas preguntas
+la primera pregunta que me hace es cuál es el repositorio con el cual quiero conectarme
+entonces, dirigámonos a GitHub, por aquí voy a colocar GitHub, voy a buscar mi proyecto
+que se llama facturaciónweb.p, acá lo tenemos y vamos a copiar la url, pero en este caso la
+url que voy a copiar no va a ser este https, sino que quiero coger la opción de ssh, vamos a
+copiarlo, vamos a volver por acá y vamos a pegarlo, listo, ya tenemos esto, lo próximo
+que me indica es donde yo quisiera que se clone este repositorio, en mi caso yo voy a querer
+que se clone en la siguiente ubicación, quiero que ingrese a la carpeta home, quiero
+que ingrese a la carpeta facturación web, carpeta htdocs y acá en esta carpeta llamada
+facturaciónweb.p, entonces vuelvo por aquí, le pego la dirección y listo, esto me ha generado
+una dirección, un archivo acá dentro de home, facturaciónweb.deployed y se llama config.html
+entonces me gustaría volver al administrador de archivos, acá lo tengo y me gustaría
+antes que nada dirigirme a la carpeta htdocs y la carpeta facturación web y por acá quiero
+eliminar todos los archivos que subimos previamente, pero tengamos algunos cuidados
+porque hay algunas carpetas que quiero que se queden, vamos a quedarnos acá, la carpeta
+app se va, se va, se va, se va, quedémonos aquí, la carpeta releases es una carpeta que
+me ha generado el programa deploy que ahorita lo vamos a revisar, vamos a eliminar esto,
+le voy a dar en ok, listo, la carpeta resource roads también se eliminan,
+esta otra carpeta llamada charret es una carpeta que también me lo ha generado deployed,
+lo cerré, disculpen, vamos a volver por acá, vamos a volver a la carpeta htdocs,
+sigamos eliminando, la carpeta storage, test y vendor es una carpeta que me generó
+que venía del proyecto, todos los archivos también, vamos a eliminarlos y todos estos
+archivos también vamos a eliminarlos, por aquí si quieren que aparezca como a su momento
+podríamos generar una nueva carpeta que la carpeta se llame public y dentro de la carpeta
+llamada public vamos a crear un archivo php que se llame index.php y que diga
+hola mundo, ¿para qué? para que haya algo que mostre nuestra página,
+le guardo los cambios, cierro esto, si abro, actualmente esta es la que se debe abrir, perfecto,
+ahora sí, cuando inicializamos deploy como decía su documentación se ha creado un nuevo
+archivo, ese archivo se ha creado acá en la carpeta llamada deployed y el archivo en
+el repositorio que va a clonar, lo siguiente que tenemos es el directorio en el cual lo va a
+clonar, va a ingresar a la carpeta home, va a ingresar a la carpeta facturación web,
+va a ingresar a htdocs y dentro de la carpeta facturación web.p lo va a clonar,
+¿qué más? quiero que se centren en esta parte que tenemos aquí, en esta parte,
+como mencioné, cuando nosotros clonamos un repositorio lo que tenemos que hacer es
+instalar composer entre muchas otras cosas que vamos a necesitar que ocurran, entonces aquí
+es donde nosotros vamos a especificar qué acciones queremos que ocurra cada vez que se
+clone un repositorio y acá ya me dan algunos ejemplos de lo que puedo ejecutar,
+esos asteriscos que tenemos o ese numeral que tenemos acá significa que están comentados,
+yo lo voy a descomentar. Aquí como podemos ver lo que especifica primero es que va a ingresar al
+directorio, es decir, va a ingresar a esta carpeta que tenemos acá y una vez que estamos
+acá va a ejecutar el siguiente comando, va a ejecutar el comando composer install y
+va a excluir aquellos paquetes que habíamos especificado que sólo iba a ser para desarrollo,
+luego de eso va a ejecutar el comando php artisan migrate, ¿por qué? porque de repente
+tú has creado nuevas migraciones y quieres que esas migraciones se vean reflejadas en tus
+tablas, entonces por eso también ejecutamos el comando php artisan migrate y ¿por qué coloca
+el force? porque cuando de repente en tu variable de entorno especificas que estás en
+producción, entonces cuando estás en producción se sale una alerta de que no es conveniente
+ejecutarlo, pero con este force evitas que te salga la alerta y que simplemente se ejecute,
+por acá ejecuta un comando llamado php artisan optimis, resetea los que en el caso de que lo
+estuvieras ejecutando y demás, muy bien, entonces todo esto yo quiero que se ejecuten,
+entonces lo vamos a dejar así, pero en nuestro caso nosotros estamos trabajando con la versión
+de php 8.1, si bajamos acá tenemos la versión 8.1 pero esa plantilla me lo ha creado con la
+versión de php 8.2, entonces voy a dirigirlo para acá y voy a empezar a reemplazar el 8.2
+por el 8.1 y vamos a guardar los cambios, ahora cuando clonamos previamente
+este repositorio vimos que la variable entorno .m no se subía a nuestro repositorio y que
+tuvimos que duplicar esto, cambiarle el nombre y colocar las credenciales correctas que
+ocurran, en este caso cuando trabajemos con deploy lo que me indica es que ese tipo de
+archivos que necesitamos que se incluyan cada vez que clonemos debemos incluirlo acá en
+este en esta carpeta llamada overlays, cualquier archivo que nosotros coloquemos acá se va a
+utilizar como plantilla para hacer una copia e incluirlo en el proyecto que se acaba de
+entonces lo que voy a hacer es esto, voy a ingresar a mi proyecto facturación web, voy a copiar
+este archivo .m y lo voy a arrastrar hacia esta carpeta, una vez que lo he arrastrado
+simplemente vamos a empezar a a cambiarle el nombre o a cambiar las credenciales,
+en primer lugar por ejemplo la url con la cual vamos a conectarnos va a ser
+facturacionweb.p y tendríamos que ahora que crear nuestra base de datos, la base de datos
+facturación web que de hecho me parece que ya teníamos nuestra base de datos creada,
+que la creamos acá, ingresando a base de datos y el nombre de usuario era el siguiente y
+el campo facturación web era el siguiente, pero lo que no recuerdo es el usuario porque
+vamos a eliminarlo, vamos a eliminar esta base de datos y vamos a crear una nueva, añadir a la
+base de datos se va a llamar facturación web y mi usuario se va a llamar victor, entonces voy
+a conectarme por acá, voy a dirigirme aquí, específico que la base de datos se llama
+facturación web, el usuario se llama victor, por acá coloco victor y la contraseña es la
+que tenemos acá, ctrl c y le doy ctrl v, guardamos los cambios y ya tenemos lo principal la
+conexión que es la conexión con la base de datos, entonces no nos olvidemos de crearlo
+porque simplemente le hemos dejado señalado y vamos a añadir la base de datos, perfecto,
+si le vamos a administrar tenemos la base de datos creada pero sin ninguna tabla y no va a
+haber ningún problema en el sentido de que por aquí hemos especificado dentro de la
+configuración que una de las acciones que debe realizar es ejecutar las migraciones y por
+lo tanto crearía toda la estructura de tablas que yo necesito, ahora recuerden que nosotros o
+yo previamente había creado este repositorio pero como un repositorio privado, si es privado
+sólo aquellas máquinas que tienen el permiso van a poder acceder al repositorio y clonarlo,
+caso contrario no van a poder clonarlo, entonces tendríamos que darle permiso a nuestro
+servidor para que se pueda conectar a mi repositorio y lo pueda clonar satisfactoriamente,
+si volvemos aquí a la documentación por acá también me la especifica, vamos a bajar un
+poco y acá lo tenemos, me dice que es probable que nosotros necesitemos darle permiso a nuestro
+a nuestro servidor para que se conecten a nuestro repositorio, para eso
+acá mucho tiempo y mi actividad se ha cerrado, voy a cerrar eso de acá y voy a volver a ingresar
+lo primero que tendría que hacer si es que yo quiero
+darle permiso es ingresar como usuario de sitio y estando acá me dice que ingrese a esta
+carpeta, a la carpeta cdssh entonces en este punto yo ya me encuentro en la carpeta en la
+se almacenan todas las claves ssh yo como es un servidor nuevo no debo tener ninguna
+clave ssh por acá como vemos está vacía entonces voy a tener que crear una nueva,
+como creo una nueva ejecutando el siguiente comando ssh guion kgen guion f y darle un
+nombre a nuestra a nuestra clave ssh por ejemplo el nombre que le voy a dar va a
+ser deploy kit entonces me dirijo por acá le doy en pegar y ya está aquí me va a preguntar
+si es que quiero colocarle una contraseña yo le voy a decir que no quiero simplemente le
+voy a dar enter y me vuelve a preguntar y le vuelvo a dar enter y listo ya hemos creado
+la llave ssh ahora para copiar esta llave lo que tengo que hacer es ejecutar este comando
+cat ssh y el nombre de la llave que generé no yo le di el nombre de ploy kit entonces
+acá lo colocó de ploy kit pero con la extensión punto entonces me dirijo nuevamente
+por acá le vamos a dar en pegar y le voy a dar en enter y esta es la llave ssh que
+se ha generado perfecto vamos a copiarlo lo voy a seleccionar todo un control c ya lo tengo
+y ahora quiero dirigirme aquí a donde tengo el repositorio y voy a proporcionarle esa llave
+ssh a mi repositorio para proporcionárselo me tengo que dirigir a esta opción que dice
+setting dentro del repositorio y me voy a dirigir a esta parte que dice deployed case
+voy a especificar que quiero agregar una nueva llave y vamos a darle un título por
+ejemplo el nombre que le voy a dar va a ser deploy porque es referencia a lo que estamos
+haciendo y vamos a pegar aquí nuestra llave ssh y listo agregamos y ya tenemos la llave
+ssh de nuestro servidor en agregado en nuestro en nuestro repositorio así que en teoría ya
+deberíamos poder clonar nuestro repositorio desde nuestro servidor acá me dice que para
+probarlo que en efecto ya puedo hacerlo lo que haga es que
+haga lo siguiente todavía me falta un paso importante para poder tener acceso acá a
+github es dirigirme al administrador de archivos aquí tenemos vamos a ingresar a esta carpeta a
+la carpeta ssh por aquí ya tenemos nuestro nuestra llave deploy git acá la tenemos pero
+tenemos que modificar este archivo el archivo config que tenemos acá porque tenemos que
+modificar por lo siguiente copiamos esto de acá y lo pegamos y le damos en guardar esto va
+a permitir que cada vez que el host github.com intenté conectarse mande el nuestro
+nuestra llave ssh que se llama deploy git para que sepa cuál es la llave ssh que
+debe utilizarla muy bien ya está guardado y ya podemos cerrar acá para probar que en
+efecto podemos ya clonar nuestro repositorio me recomienda que ingrese desde aquí a mi
+carpeta temporal para ingresar a mi carpeta temporal debo colocar cd temp le damos enter
+ya me encuentro en la carpeta temporal y intenté clonar mi repositorio como lo voy a clonar
+escribo por acá git cloned me dirijo a mi repositorio facturación web.p vamos a copiar
+esa url nos dirigimos nuevamente por acá y vamos a pegarlo si me permite clonarlo significa
+que he logrado agregar las llaves ssh satisfactoriamente vamos a darle enter me
+pregunta si confío en el sitio le voy a decir que sí y veo que en efecto he logrado
+clonar el repositorio muy bien para terminar con la parte de la configuración de deploy quiero
+retornar un momento a mi administrador de archivos aquí y quiero dirigirme a la carpeta
+deploy y abrir este archivo y quiero que miren lo siguiente nosotros luego de pedir
+que se ejecute todas estas acciones al final le estamos pidiendo que refresque php 8.1 fpm ahora
+el problema es el siguiente el problema es que los usuarios de sitio es decir este usuario que
+según donde lo vamos a ejecutar no van a tener permiso o no tienen permiso para poder
+refrescar el fmp php fmp entonces lo que tendríamos que hacer es darle permiso a este
+usuario y cómo le vamos a dar permiso a este usuario vamos a subir un poco y por acá me
+indica cómo hacerlo vamos a subir y justamente acá lo tenemos quiero traducirlo para ver
+qué dice y me dice lo siguiente este paso solo es necesario para aplicaciones php justamente
+estamos en una aplicación php y me dice por razones de seguridad los usuarios de sitio no
+pueden recargar el servicio el servicio php fpm que es necesario para borrar la cachida de
+ruta real después de cambiar el enlace simbólico actual a una última versión para permitir a
+los usuarios de sitio recargar solo el servicio php fpm creamos un archivo llamado su doors y
+básicamente tenemos que hacer esto vamos a copiar este comando vamos a abrir un
+de notas vamos a pegarlo acá y me dice que de todo esto reemplace esto por el nombre de
+nuestro usuario de sitio cuál era el nombre de nuestro usuario de sitio se llama facturación
+web entonces me dirijo acá y lo voy a pegar todo lo demás me dice que lo mantenga ahora
+vamos a dirigirnos a la terminal de git batch voy a agrandarlo para que lo puedan
+y aquí voy a ejecutar lo siguiente vamos a iniciar sesión como usuario
+entonces escribo ssh root mi p ingresamos y una vez que me encuentro por acá
+ejecuto lo que me pidieron colocó esto le doy enter y listo desde este momento
+este usuario va a poder refrescar mi el servicio de php fpm y muy bien ahora sí ya
+tenemos toda la configuración de deploy lista y ya podríamos desplegar nuestra
+aplicación pero eso lo vamos a ver en el próximo capítulo

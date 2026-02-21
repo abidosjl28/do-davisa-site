@@ -1,0 +1,120 @@
+hola qué tal amigos en este vídeo tutorial te quiero enseñar a cómo puedes subir tu proyecto
+larabel a hostinger ahora por fines prácticos yo no voy a explicar cómo se realiza la adquisición
+de un nuevo hosting en hostinger sino que yo voy a suponer que tú ya cuentas con uno ahora
+cuando tú quieres un hosting aquí lo que ocurre por defecto es que se crea un nuevo sitio
+web por ejemplo el sitio web que se me ha generado es este que tenemos acá si yo ingreso a este
+dominio lo que va a ocurrir es que se va a cargar esta página por defecto pero claro yo no quiero
+que se cargue esta página sino que a mí lo que me gustaría es que se cargue un proyecto
+que yo ya tengo aquí instalado ese proyecto es de un facturador y se llama facturación web
+que es el que tenemos acá antes de subirlo a nuestro hosting lo que voy a hacer es verificar
+qué versión de php tengo instalado y si también tengo instalado las extensiones que
+necesito para que mi proyecto funcione para hacer eso vamos a dirigirnos acá a donde
+dice administrar y vamos a dirigirnos a esta parte que tenemos acá que se llama avanzado
+muy bien una vez que estamos acá en la opción es de avanzado vamos a dirigirnos a la opción que
+dice configuración de php y acá puedo ver las versiones de php con las cuales yo puedo
+trabajar por defecto bien instalado o bien seleccionado la versión de php 8.1 pero como
+vemos podemos trabajar con la versión 7.3 7.4 8.0 8.2 entonces esto va a depender mucho de
+con qué versión del árabe está trabajando en mi caso la versión del árabe con la cual
+estoy trabajando es la versión 10 que es compatible con la versión 8.1 entonces quiero
+dejarlo acá y luego quiero dirigirme a las opciones de extensiones de php muy bien una
+vez que estamos acá me interesa buscar dos extensiones una extensión es swap que veo
+que está seleccionado así que está bien y la otra es open ssl que también está seleccionada
+entonces puedo instalar correctamente mi proyecto aquí ahora cómo lo subimos para subirlo vamos
+a dirigirnos a esa opción que dice archivos y luego a la opción que dice administrador de
+archivos muy bien vamos a dirigirnos acá le voy a dar clic sobre este elemento sobre el
+y me lleva a esta página en esta página o aquí en esta parte es donde tengo que subir todos
+los archivos de mi proyecto pero esos archivos lo vamos a subir de la siguiente manera quiero
+comprimir todos esos archivos pero antes de comprimirlo quiero darle algunas indicaciones
+para que tú no tengas complicaciones cuando ya tengas tu proyecto subido tienes que haber
+ejecutado previamente o debes haber generado el archivo manifiesto cuando se genera el
+archivo manifiesto cuando tú has ejecutado en tu proyecto el comando npm rom build este
+comando me genera una carpeta dentro de la carpeta public llamado build y dentro de esta
+carpeta me genera otra carpeta llamada assets aquí está el compilado de nuestros estilos y
+nuestro archivo javascript y previamente acá tenemos un archivo llamado manifiesto punto
+jason y este archivo en este archivo se indica cuáles son los dos archivos compilados que
+tenemos acá para que la gravel sepa cómo llamarlos ahora otra cosa que debes tener en
+consideración es la siguiente debes verificar que este archivo llamado hot no existe en la
+en tu proyecto el comando npm rom deb y lo que hace este archivo es indicarle a la
+gravel que no utilice lo que él el archivo manifiesto sino que se conecte con que con
+bit con el servidor de bit por ejemplo si en este momento yo tratase ingresar a ese
+proyecto a facturación web punto test y le doy a ingresar al sistema lo que debería
+ocurrir es que se ve todo dañado de esta manera porque se está viendo todo dañado
+porque el archivo hot le está indicando que espera conectarse con bit pero en este momento
+yo no tengo encendido bit silenciando vamos a ver que se vuelve todo a la normalidad pero
+si lo apago vamos a ver que otra vez se ve todo feo entonces para evitar eso lo que
+vamos a hacer es dirigirnos acá y eliminar este archivo vamos a eliminarlo cuando yo
+elimina el archivo hot lo que va a hacer la gravel es ok tú no esperas conectarte con
+bit entonces lo que vamos a hacer es tomar el archivo manifiesto y por tanto se va a
+muy bien aclarando esto ahora sí vamos a hacer lo siguiente vamos a dirigirnos acá y vamos
+a seleccionar todos los elementos de mi proyecto voy a darle control a y voy a darle
+clic derecho añadir archivo comprimido le vamos a dar añadir archivo y vamos a comprimirlo
+si pero lo vamos a comprimir como zip y le vamos a dar en aceptar y muy bien vamos a
+esperar un momento a que se termine de compilar todos nuestros archivos muy bien mi proyecto
+termina de compilarse y lo tengo justamente acá en facturación web.zip ahora lo próximo
+que vamos a hacer es dirigirnos aquí nuevamente y vamos a subir pero solamente ese comprimido
+me dirijo por acá me dirijo a upload vamos a dirigirnos a subir un archivo file y
+vamos a buscar mi proyecto en cuestión se llama facturación web y el comprimido acá lo tenemos
+facturación web.zip acá está cargando podemos ver la barra de progreso me espero un momento
+vamos a darles también para que lo puedan ver mejor y listo ya lo tengo acá lo próximo
+que vamos a hacer es una vez que lo hemos subido simplemente lo descomprimimos como
+lo descomprimimos clic derecho y extraer me preguntan en qué carpeta quiero extraerlo
+yo lo voy a decir en la raíz entonces le coloco simplemente un slash y le damos en
+extraer y listo todo mi proyecto que tenemos acá todo el proyecto que tenía previamente
+aquí ahora lo tengo en mi hosting pero tenemos que hacer un pequeño cambio y cuál es el
+por defecto cuando nosotros trabajamos con larabel nuestro archivo index.php lo tenemos
+aquí lo tenemos en una carpeta llamada public muy bien en el caso de hostinger el archivo
+principal el archivo index.php espera no que se coloque dentro de una carpeta llamada public
+sino que espera que se encuentre dentro de una carpeta llamada public html por ejemplo
+en este momento cuando ingresamos a la página lo que se está abriendo es este archivo el
+archivo de fall.php entonces aquí es donde yo quiero que esté mi index.php lo que voy a
+hacer entonces es dirigirme a la raíz dirigirme a la carpeta public y vamos a
+seleccionar todos los elementos de aquí vamos a darle un seleccionamos todos y vamos a darle
+clic a la opción de copiar que es la que tenemos acá le voy a dar en copiar y le voy a decir ok
+nos encontramos en la carpeta public quiero que salgas una carpeta para atrás selecciona esta
+opción una vez que saliste una carpeta para atrás lo que quiero que hagas es que ingreses
+a la carpeta public html y sea en esta carpeta donde quiero que copies estos elementos y
+listo ahora si volvemos a la carpeta public html aquí voy a tener todos mis archivos
+todas las archivas que necesito para poder subir con el éxito de mi proyecto si yo vuelvo por
+acá y actualizo ya no debería ver esta página sino que lo que debería ver es un mensaje
+de error es un mensaje de error del árabe es cierto de que no puede conectarse a una
+determinada base de datos y en efecto no puede conectarse porque porque no hemos creado ninguna
+base de datos como creamos una base de datos para crear una base de datos vamos a dirigirnos
+aquí a la opción de base de datos y vamos a dirigirnos a esta opción que dice administrador
+administración muy bien ahora aquí tienes que hacer lo siguiente tienes que darle un
+nombre a tu base de datos por ejemplo yo le voy a dar el nombre facturación pero ojo hostinger
+le van a poner un prefijo es decir y base de datos no se va a llamar facturación sino se va
+a llamar 1 9 8 7 1 8 5 y demás slash facturación y ahora también tienes que crear un usuario y
+una contraseña que pueda conectarse a esta base de datos para eso por ejemplo yo voy a
+una base de datos que se llame victor perdón un usuario que se llame victor y vamos a generar
+una contraseña yo voy a generar esa contraseña a través de esta opción esto me genera una
+contraseña aleatoria y voy a copiarlo muy bien dicho esto le vamos a dar clic en crear
+y me dice que la base de datos se creó satisfactoriamente voy a actualizar y
+acá tengo la base de datos perfecto ahora yo puedo administrar esta base de datos a
+través de pachema y admin de qué manera le voy a dar clic en ingresar a pachema y admin
+espero que me redirija y acá tengo la base de datos que se generó esta base de datos está
+totalmente vacía entonces lo que yo voy a hacer en este momento es dirigirme a mi pachema y
+vamos a exportar esta base de datos le voy a exportar como un sql
+acá lo tengo y luego voy a dirigirme por acá a la base de datos que cree y le voy a
+decir que quiero importar la base de datos entonces me dirijo aquí a descargas y
+importo esa base de datos perfecto ahora en teoría ya tenemos la base de datos no obstante
+si vuelvo acá vamos a ver que sigo sin poder conectarme porque porque nosotros no hemos
+especificado nuestras credenciales es decir no hemos especificado a qué base de datos quiero
+conectarme para especificar a qué base de datos quiero conectarme vamos a dirigirnos
+nuevamente a el administrador de archivos muy bien me dirijo por acá y vamos a modificar
+nuestro archivo punto en le vamos a dar en editar y acá lo tenemos muy bien que vamos
+a hacer acá en primer lugar vamos a copiar el dominio con el cual estamos trabajando y
+vamos a decir acá que el dominio en cuestión es este listo la variable en vamos a cambiarlo
+de local a producción y el de book lo vamos a pagar vamos a colocarlo en falso muy bien
+una vez que hecho esto lo próximo que vamos a hacer es centrarnos en las credenciales de
+la base de datos en cuestión se llama de esta manera u98 y demás facturación entonces
+coloco acá el nombre de la base de datos lo próximo que tengo que hacer es mi usuario
+el usuario en cuestión es esta que tenemos acá entonces nuevamente me dirijo por acá y
+modificó el usuario el usuario no va a ser root sino que va a ser este y por último
+mi contraseña la contraseña en cuestión pegamos acá ahora bien esta contraseña yo
+quiero colocarlo pero entre comillas porque porque tengo caracteres raros y para que no
+ocurra ningún inconveniente mejor lo colocó entre comillas y ahora sí le vamos a dar en
+guardar entonces ya tenemos una base de datos y hemos cargado las tablas necesarias ya
+le hemos pasado las credenciales para que en ese proyecto se pueda conectar esa base de
+entonces en teoría ya deberíamos poder conectarnos a nuestro proyecto le voy a dar clic
+y vemos que en efecto se ha logrado ha logrado ingresar sin ingreso los estilos
+se ven correctamente y esto es debido a que hemos cargado el archivo manifiesto previamente

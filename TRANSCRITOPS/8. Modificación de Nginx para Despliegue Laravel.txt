@@ -1,0 +1,33 @@
+En este capítulo vamos a ver cómo solucionar este problema de que me marca errores de que no puede
+no puede obtener estos que tenemos acá. La razón por la que no puede obtenerlo es que es la forma
+en la cual está configurado nginx. Para ver la configuración de nginx tenemos que dirigirnos
+acá donde dice vhost dentro de nuestro sitio y acá podemos visualizar esto. ¿Qué es esta
+configuración? Es básicamente el que se encarga de recibir las peticiones y ver hacia dónde debe
+apuntar. Acá por ejemplo recibe peticiones 80 y lo redirecciona hacia un 443. Le especificamos
+qué dominios es el que queremos utilizar entre muchas otras cosas, pero básicamente lo que
+está evitando que se carguen estas páginas se debe a la forma en la cual se ha solicitado
+que se procese esos archivos que tenemos acá. Lo que está haciendo esta configuración en
+este momento es recibir cualquiera de esos archivos, cualquiera de estos tipos de archivos
+que tenemos acá, siempre y cuando esos archivos se encuentren en el siguiente directorio en la
+carpeta public y en cualquier parte de esta carpeta que tenemos acá. Entonces una forma
+de solucionar esto, este problema, es ir publicando todos los assets de los paquetes
+que hayamos instalado, incluyendo el de la uair y que esos assets se vayan colocando acá
+en la carpeta public, pero eso puede ser un trabajo arduo. Normalmente lo que hace
+la ARABEL cuando compilamos es que apunta hacia lo que tenemos acá en la carpeta
+vendor. Por ejemplo, si nos dirigimos acá a la carpeta vendor para ver los paquetes
+que hemos instalado, podemos encontrar por acá diferentes paquetes y si vamos explorando,
+ahí es donde encontramos los archivos CCS y JavaScript. Entonces lo que yo voy a hacer es
+modificar esta configuración y la voy a cambiar de la siguiente manera. No quiero que limites
+a que solo la ARABEL pueda acceder a los archivos que se encuentren en la carpeta public,
+entonces quiero comentarlo. Voy a comentar todo esto que tenemos acá. Vamos a comentarlo
+tanto aquí, pero también vamos a comentarlo acá abajo. Acá abajo también tenemos algo
+similar. Entonces aquí también quiero comentarlo. Empiezo a comentar línea a línea. Una vez que
+hemos hecho esos comentarios vamos a darle en guardar. Ya guardamos los cambios y ahora
+tenemos que refrescar NGINX para que reconozca esos cambios. Para refrescarlo
+quiero dirigirme al área administrativa. Vamos a dirigirnos a la sección de instancia,
+que es el que tenemos acá. Y acá tenemos NGINX y vamos a reiniciarlo. Le voy a dar click
+aquí y le voy a decir si quiero reiniciarlo, aceptar. Perfecto, ya se reinició, ya debió haber
+reconocido los cambios y ahora si es que yo retorno y actualizo por aquí vemos que ya
+no me marca ningún error y si doy clic acá se abre satisfactoriamente. Entonces ya hemos
+logrado solucionar este pequeño problema. En el próximo capítulo lo que me gustaría
+hacer es ver cómo agregar un certificado SSL.

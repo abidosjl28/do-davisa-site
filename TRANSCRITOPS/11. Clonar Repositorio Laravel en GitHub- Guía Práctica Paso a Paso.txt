@@ -1,0 +1,58 @@
+En este capítulo quiero ver cómo se clona un repositorio de Laravel, para lo cual voy a
+dirigirlo por acá y me gustaría eliminar este proyecto que tengo acá, ¿por qué eliminarlo?
+porque ya lo subí al repositorio, entonces vamos a eliminarlo, voy a esperar un momento
+que termine y luego continuo. Muy bien, para clonar lo que yo quiero hacer es primero
+centrarme en la carpeta en la cual quiero clonarlo, yo quiero clonarlo acá dentro de C,
+Chang, htdocs, Laravel. Una vez que me encuentro acá voy a darle click derecho y vamos a abrir
+la terminal, voy a abrir la terminal acá y tengo acá el PowerShell. Muy bien, aquí yo voy a
+colocar lo siguiente, la sentencia git clone y una vez que coloque la sentencia git clone
+me dirijo acá y voy a copiar la url de mi repositorio, me voy acá donde dice codes y
+voy a copiarlo, en esta parte que dice htdps selecciono la dirección, luego vuelvo por acá,
+lo pego y le voy a dar enter y va a empezar el proceso de clonación, el cual me indica que ya
+terminó. Ahora vamos a abrir este proyecto, voy a dirigirme a Visual Studio Code y lo voy
+a abrir, tengo que dirigirme acá donde dice allá, lo que ha ocurrido es que como yo le
+di a mi repositorio el nombre facturacionweb.p, ese es el nombre que le he dado a la carpeta,
+yo voy a cambiarlo por facturacionweb simplemente. Ahora sí vamos a abrir carpeta, tengo que
+dirigirme al disco C, al disco Chang, htdocs, Laravel y ingreso a facturacionweb.
+Ahora, yo por comodidad para abrir este proyecto, previamente yo ya había creado un
+virtual host llamado facturacionweb.tes que lo que hacía era abrir mi aplicación Laravel,
+si me dirijo por acá intento ingresar a ese proyecto a facturacionweb.tes, miren me va a
+dar un error. ¿Por qué me está marcando un error? Sucede que cuando nosotros subimos nuestro
+proyecto a un repositorio va a haber varias carpetas que no se van a subir, entre ellas
+no se va a subir la carpeta Vendor y tampoco se va a subir la carpeta Node.js. ¿Qué encontramos
+en la carpeta Vendor y qué encontramos en la carpeta Node.js? En Vendor encontramos todas
+las dependencias de Composer y en Node.js encontramos todas las dependencias de NPM,
+en Node Modules, perdón. Entonces, si queremos poder abrir este proyecto lo que tendremos que
+es en primer lugar instalar ambos, entonces voy a instalar Composer, ¿cómo instalo Composer?
+ejecutando Composer install y por acá me está marcando un error y ya, el error me
+indica que yo no tengo que necesito habilitar ciertas extensiones, me voy a dirigir acá a
+una extensión que necesito habilitar es la extensión SOAP, esta es una extensión que
+usa mi proyecto por eso me está dando el error y otra extensión que necesito instalar
+o habilitar es Open SSL, vamos a buscarla y la tenemos por acá. Esto de repente no te
+aparece a ti, a mí me está pareciendo porque como mencionó mi proyecto para funcionar
+necesito tener habilitado esas dos extensiones, entonces lo voy a habilitar, voy a reiniciar
+Apache y vamos a volver por acá, vuelvo a ejecutar Composer install y ahora sí va a iniciar el
+proceso de instalación de todos los paquetes que necesita Lara para funcionar. Por aquí
+apareció la carpeta vendor, lo próximo que vamos a hacer es instalar las dependencias
+de NPM, ejecutando NPM install, listo y que se vaya ejecutando. Ahora, ¿qué más ha ocurrido?
+por motivos de seguridad cuando nosotros subimos un proyecto a un repositorio no
+se sube nuestra variable en torno, ¿por qué? porque puede quedar expuesta alguna credencial
+de nosotros, entonces si visualizamos aquí no tenemos ningún archivo .en y como no tenemos
+ningún archivo .en tenemos que crearlo, para lo cual nos proporcionan acá un .en .exemple
+que podemos utilizarlo como una plantilla, le doy control C, control V y procedo a
+reemplazar el nombre, quiero que se quede en .en, entonces aquí ya tenemos nuestra
+variable en torno, vamos a colocar nuestras credenciales, por ejemplo la app url que
+estoy utilizando es facturacionweb.tes, la base de datos a la cual quiero que se conecte es
+facturacionweb con usuario root y contraseña, perfecto. Ahora, como hemos tomado como
+plantilla este archivo lo que puedo visualizar es que acá en la variable appk no tenemos
+absolutamente nada, aquí suele haber una cadena y esa cadena se utiliza para poder codificar
+nuestras contraseñas, entonces tendríamos que generarlo, ¿cómo lo generamos? de la siguiente
+manera, nos dirigimos acá y vamos a ejecutar el comando php artisan key 2.generate y le voy a
+dar enter, listo, y con esto nuestra aplicación ya está funcionando, podríamos dirigirnos
+previamente claro yo ya contaba con una base de datos facturacionweb con todos los datos necesarios,
+tengo lo presente, entonces si ahora yo me dirijo por acá puedo visualizar que
+logro ingresar al proyecto correctamente. Entonces, ¿qué quiero dejar como reflexión
+de este capítulo? siempre que nosotros clonemos una aplicación va a haber varios pasos que
+nuestro variable.m y tercer paso ya sería abrir nuestra aplicación, listo. Entonces,
+tengan presente eso porque eso mismo vamos a tener que hacerlo desde nuestro servidor,
+así que por el momento nos quedamos hasta aquí en este capítulo.

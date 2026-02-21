@@ -1,0 +1,425 @@
+Hola qué tal amigos, en este vídeo quiero enseñarte a cómo puedes desplegar tu proyecto Laravel en un hosting compartido en Goodaddy.
+Por fines prácticos en este vídeo no voy a explicar cómo se crea una cuenta ni cómo se contrata un hosting.
+Yo voy a suponer que si estás viendo este vídeo es porque ya tienes un hosting en Goodaddy.
+Entonces lo que yo voy a hacer es abrir mi navegador y estando acá simplemente voy a buscar Goodaddy.
+Por acá lo tengo, Goodaddy, vamos a ingresar y vamos a iniciar con nuestra cuenta.
+Yo ya he iniciado previamente, lo tengo abierto y simplemente voy a dirigirme a la sección que dice mis productos.
+Muy bien, yo cuento con dos productos en Goodaddy, cuento con un dominio y cuento con un hosting.
+Al contratar el hosting me dieron el dominio y este dominio ya se encuentra apuntando hacia mi hosting.
+¿Cómo sé que se encuentran apuntando? Si es que yo me dirijo a la sección de DNS,
+vamos a ver que se han agregado acá algunos DNS y estos están apuntando a la IP de mi hosting.
+En el caso de que tú hayas contratado un dominio en otro lado que no sea Goodaddy
+y quieras apuntar a tu hosting acá, no habría ningún problema.
+Lo único que tendrías que hacer es agregar un nuevo registro y acá escoger la opción A,
+seleccionas un arroba y colocas la IP de tu hosting. ¿Para qué? Para que lo apunte.
+Perfecto, pero en este caso no es el caso.
+Yo quiero centrarme exclusivamente en este que se llama Web Hosting.
+Muy bien, vamos a administrarlo, le voy a dar clic en administrar,
+me va a mandar a esta parte y tenemos que entrar en sí al cPanel.
+Para ingresar al cPanel tenemos otro botoncito que se llama Admin de cPanel
+y le vamos a dar clic ahí.
+Muy bien, lo primero que me gustaría hacer es verificar la versión de PHP
+que tengo instalado en este hosting. Quiero escoger la versión de PHP
+con la cual yo quiero trabajar. Para escoger esa versión simplemente tendría
+que bajar un poco y centrarme en la parte que dice Software
+y acá tenemos un enlace que dice Seleccionar versión de PHP.
+Si yo le doy clic en este punto, aquí podemos ver que la versión de PHP
+que tengo instalado es la versión 7.4.
+Yo voy a subir un proyecto del Área Bell 10 y para trabajar con el Área Bell 10
+necesito tener instalado por lo menos la versión de PHP 8.1.
+Entonces simplemente le voy a dar clic acá y voy a seleccionar la versión de PHP 8.1.
+Otra cosa que puedo hacer es escoger por acá alguna extensión que quisiera habilitar.
+No es mi caso, pero acá lo puedes ver, ¿no?
+Muy bien, le voy a dar en Aplicar y ahora por aquí va a aparecer que
+la versión actual con la cual voy a trabajar de PHP es la versión 8.1.
+Voy a dirigirme nuevamente a nuestro cPanel.
+Muy bien, lo próximo que vamos a hacer es ver qué archivos tenemos que subir.
+En mi caso yo cuento con un proyecto.
+El proyecto que quiero subir lo tengo acá alojado en el disco C,
+en el disco Cham y la carpeta htdocs.
+Por acá voy a ingresar una carpeta llamada Laravel y el proyecto que quiero subir
+es este que se llama facturación web.
+Voy a ingresar a este.
+Para que nosotros podamos subir nuestros archivos,
+lo recomendable sería que toda la estructura de mi proyecto
+lo coloquemos en un zip.
+Pero antes de comprimir estos archivos me gustaría hacer algunas observaciones.
+Antes de poder desplegar nuestro proyecto,
+previamente nosotros deberíamos haber generado nuestro archivo manifiesto,
+ya que en nuestro hosting no vamos a poder generarlo.
+Pero ¿qué es esto del archivo manifiesto?
+El archivo manifiesto es un archivo que se coloca en la carpeta public
+en una carpeta llamada build y se llama manifest.json.
+Si nosotros abrimos estos archivos,
+vamos a ver que simplemente es un JSON
+que indica dónde se encuentra nuestro archivo compilado.
+Y en este caso dice que nuestros archivos compilados se encuentran
+dentro de la carpeta asset y son estos dos.
+Este archivo manifiesto se genera cuando nosotros ejecutamos
+en la terminal npm room build.
+Entonces recuerden, antes de intentar desplegarlo
+tenemos que ejecutar este comando, el comando npm room build.
+Y otra cosa que quiero que hagan es lo siguiente,
+es que verifiquen que en la carpeta public no tengan este archivo llamado hot.
+¿Qué es este archivo llamado hot?
+Este archivo llamado hot lo que le indica a tu proyecto Laravel
+es que esperaría que el servidor de bit esté encendido.
+Si yo me dirijo ahorita a mi proyecto y actualizo
+y me redirijo a este dashboard por ejemplo,
+vamos a ver que los estilos de mi página se van a ver todos rotos.
+¿Por qué?
+Si yo le doy un inspeccionar, le doy en consola
+o me doy acá elementos en la parte de arriba, en el head,
+vamos a ver que mi proyecto está intentando recuperar mis assets
+de la siguiente manera, conectándose a bit
+y luego intentando acceder a los recursos
+tanto de estilos como de JS.
+Se está intentando conectar a bit porque existe este archivo, el archivo hot.
+Si yo lo elimino, lo que va a entender Laravel es ok,
+no voy a conectarme con bit,
+sino que voy a acceder a los compilados,
+es decir a los que tengo dentro de la carpeta build.
+Si ahorita vuelvo, le doy en actualizar,
+vamos a ver que ahora sí veo correctamente mi página.
+Entonces, a tener esa consideración,
+antes de subir, ejecuta npm room build
+y de existir el archivo hot, lo vas a eliminar.
+Una vez que ya tenemos eso, vamos a empezar a comprimirlo.
+Le vamos a dar Ctrl E o Ctrl A, dependiendo de tu computadora,
+y le vamos a dar clic derecho,
+WinRAR y añadir al archivo.
+Ahora, yo quiero comprimirlo, pero no quiero comprimirlo como RAR,
+quiero comprimirlo como zip.
+¿Por qué? Porque nosotros vamos a subir este comprimido a nuestro hosting
+y desde nuestro hosting vamos a descomprimirlo.
+Y si lo subimos como formato RAR, no vamos a poder descomprimirlo,
+tenemos que subirlo por eso como zip.
+Le voy a dar en aceptar y va a empezar el proceso de comprimir.
+Yo voy a posar el vídeo en este punto
+y cuando termine de comprimir, continuo.
+¿Cómo vamos a subir esos archivos?
+Para subir esos archivos tenemos que centrarnos en esta sección que dice archivos
+y luego administrador de archivos.
+Por acá lo tengo.
+Muy bien, antes de continuar, quiero explicar cómo funciona.
+Nuestro dominio, el dominio que yo tengo acá,
+actualmente se está mostrando esta página que tenemos acá.
+¿Pero por qué se muestra esta página?
+Esta página es lo que nosotros vamos a poder encontrar
+dentro de esta carpeta llamada public.html.
+Si yo, por ejemplo, en este momento,
+eliminase todo lo que tengo acá,
+elimino todo, le doy en eliminar
+y ahora crease por acá un nuevo archivo.
+Por ejemplo, quiero crear un archivo llamado index.php
+y que se cree justamente en este punto.
+Y clic derecho a editar.
+Por acá colocamos, por ejemplo, una etiqueta php
+y abajo la instrucción que me imprime la pantalla holamundo.
+Lo cierro.
+Guardo los cambios. Listo.
+Si ahora vuelvo acá y actualizo, lo que voy a ver o lo que debería ver es ese holamundo.
+Entonces, lo que nosotros tengamos en la carpeta public.html
+es lo que finalmente se va a abrir.
+Entonces, yo quiero volver acá a la estructura de mi proyecto
+y quiero eliminar todos los archivos.
+Quiero eliminar todos los archivos menos los siguientes.
+Quiero dejar la carpeta SSL y quiero dejar la carpeta public.html.
+Porque ya mencioné que public.html es lo que se va a abrir
+y SSL son nuestros certificados SSL.
+Entonces, vamos a eliminar todo lo demás.
+Le voy a dar en eliminar,
+confirmar y eliminamos todo lo demás y también eliminar.
+Si volvemos acá, vamos a ver que se sigue mostrando el holamundo.
+Muy bien. Una vez que ya tenemos limpio esa estructura,
+vamos a cargar un archivo.
+¿Qué archivo quiero cargar?
+Yo quiero cargar el archivo que comprimimos a su momento.
+Dicho archivo se está ubicando aquí en facturación web.
+Entonces, vamos a copiar la estructura, nos dirigimos acá,
+seleccionamos archivo, ingresamos acá.
+Muy bien.
+Estando acá, simplemente buscamos el zip,
+le damos en abrir, esperamos que se care.
+Va a cargar bastante rápido.
+Acá lo tenemos.
+Y vamos a dirigirnos hacia a volver nuevamente.
+Acá lo tenemos. Perfecto.
+Yo voy a darle clic derecho y vamos a darle clic en extraer.
+Voy a preguntar dónde quiero extraerlo.
+Yo voy a decir que quiero extraerlo en ese mismo directorio.
+Le voy a dar en extraer files.
+Y va a empezar a reconocer o buscar qué archivos tenemos.
+Y luego lo va a colocar todos acá.
+Acá lo tenemos.
+Para poder visualizarlo simplemente lo actualizamos
+y tenemos toda la estructura de nuestro documento HTML.
+Ahora, tal y como yo les mencioné,
+los archivos que se van a abrir son los archivos que yo coloque
+dentro de la carpeta pública HTML.
+Por defecto, Laravel coloca su archivo index.php
+en la carpeta public, que es la que tenemos acá.
+Entonces, yo tengo que mover todos estos archivos
+hacia la carpeta pública HTML.
+Pero en realidad, no voy a moverlo.
+Lo voy a copiar.
+Voy a seleccionar todos esos archivos.
+Voy a dirigirme acá donde dice copiar.
+Y una vez que le di clic donde copiar, le voy a decir
+OK, quiero que lo copies, pero en la carpeta llamada public.html.
+Y le vamos a dar en copiar files.
+Si ahora nos dirigimos a public.html,
+acá tenemos nuestro index.php,
+que es el archivo que se va a abrir por defecto.
+Sólo que en este punto, si yo intentase abrir,
+me va a dar un error.
+Yo voy a actualizar y me dice que no tengo
+configurado correctamente mi base de datos,
+que está tratando de conectarse a una base de datos
+llamada root y no ha podido.
+En efecto, porque nosotros todavía no hemos
+configurado nuestra base de datos.
+Ahora, ¿cómo creamos una base de datos?
+Para crear una base de datos, nos vamos a nuestro Cpanel,
+al que tenemos aquí, y vamos a bajar un poco.
+Acá tenemos la opción que dice base de datos.
+Pero la que me interesa en este momento
+es esta que se llama base de datos MySQL.
+Voy a darle click y por defecto,
+yo vine a una base de datos creada,
+que es la que tengo acá.
+Tengo una base de datos y también tengo un usuario,
+un usuario asignado.
+El usuario que está asignado es este de acá.
+Y por acá yo podría cambiar la contraseña.
+Entonces quiero utilizar estas credenciales
+y colocarla en mi proyecto.
+Nos vamos a nuestro proyecto acá
+y buscamos nuestro archivo .m.
+Vamos a ver que no lo reconoce, no aparece.
+Y esto es porque este panel que tenemos acá
+oculta de ciertos archivos que considera
+que pueden ser peligrosos o algo así.
+Entonces vamos a tener que cambiar el .m,
+pero de otra manera.
+¿Cómo lo haríamos?
+Lo que yo voy a hacer es lo siguiente.
+Voy a dirigirlo por acá y vamos a copiar este .m.
+Lo voy a copiar y quiero colocarlo en mi escritorio.
+Me dirijo por acá y acá lo tengo.
+Este va a ser el .m que yo voy a utilizar para mi proyecto.
+Pero vamos a abrirlo.
+Para abrirlo, lo voy a dar en clic derecho,
+abrir con y lo vamos a abrir con Visual Studio Code.
+Acá lo tenemos.
+Y vamos a empezar a configurar nuestro .m.
+Ojo, este que no puedes ver tu .m,
+aquí es un tema de The Good Daddy.
+Por ejemplo, en Hostinger sí se puede
+y es mucho más amigable para nosotros.
+Y en el próximo capítulo te voy a enseñar
+cómo hacerlo, ese mismo proceso, pero en Hostinger.
+Básicamente es lo mismo.
+Simplemente cambiaría las instrucciones de Hostinger,
+pero te voy a dejar ambos videos.
+Muy bien.
+Entonces vamos a empezar con esto.
+La base de datos con la cual voy a conectarme
+es este de acá.
+Entonces voy a dirigirme aquí
+y voy a especificárselo.
+Nombre de la base de datos es este.
+Si gustas, puedes modificarlo.
+Puedes modificar aquí el cambiar de nombre y demás.
+Yo lo voy a dejar así, simplemente.
+Y ahora con respecto al usuario.
+El usuario con el cual debo conectarme
+es con este de acá.
+Entonces vuelvo acá y también lo pego.
+Que coinciden los dos nombres.
+Perfecto.
+Y con respecto a la contraseña.
+Para la contraseña simplemente le doy acá
+donde dice cambiar contraseña
+y me manda a este.
+Si quieres colocas una contraseña
+o si quieres simplemente le das en generar contraseña.
+Tú puedes generar la contraseña
+que mejor te aparezca, por ejemplo esta.
+Y una vez que ya te decidiste por una,
+le das control C,
+especificas que has copiado
+la contraseña en un lugar seguro
+y le dices en usar contraseña.
+Muy bien. Se agrega esa contraseña.
+Le damos clic en cambiar contraseña
+y listo.
+Ya se estableció esta contraseña.
+Entonces vamos a dirigirnos nuevamente por acá
+y vamos a pegar la contraseña.
+Como hay caracteres extraños
+vamos a colocarlo entre comillas.
+Ya tenemos esta acá.
+¿Qué más?
+Necesito o sería bueno que coloquemos
+la URL con la cual estamos conectándonos.
+La URL en cuestión la tengo por acá.
+Entonces voy a dirigirme
+y la voy a pegar.
+Perfecto.
+Entonces ya tengo la configuración
+de mi archivo .m.
+Entonces ahora sería subir
+ese .m nuevamente acá.
+¿Cómo lo subo?
+Para subirlo vamos a darle acá en Cargar
+y en este caso
+me voy a dirigir a mi archivo escritorio.
+Voy a asegurarme que se hayan acordado los cambios.
+Perfecto.
+Lo voy a abrir
+y me dice los siguientes archivos
+ya existen en el servidor del directorio.
+Desea continuar con su Cargar
+y sobrescribir este archivo.
+Eso es lo que él mencionaba.
+El archivo sí se encuentra ahí,
+solo que no lo podemos visualizar.
+Pero en este caso lo que yo quiero
+es sobrescribir el que ahí existe.
+Le vamos a dar que sí.
+Listo.
+El archivo ya se subió.
+Y ahora
+si yo actualizaría
+me debería seguir dando un error
+pero ya no sería un error de conexión
+sino un error de que no se encuentran las tablas.
+Las tablas propias de mi proyecto.
+Lo actualizo
+y en efecto me dice que
+no se encuentra la tabla Session
+que necesita mi proyecto para poder trabajar.
+Vamos bien.
+Entonces continuemos.
+¿Cómo voy a subir la estructura de mi base de datos?
+Para subir la estructura de mi base de datos
+centrémonos nuevamente en base de datos
+pero ya no en la segunda sino en la primera opción
+en esta que se llama phpMyAdmin.
+Le voy a dar clic aquí
+y una vez que le doy clic acá
+me va a redirigir a phpMyAdmin
+que es el que tenemos acá.
+Y acá tenemos la base de datos.
+Es una base de datos vacía.
+A menos que tú hayas decidido
+crearlo inicialmente con WordPress
+en este caso se generaría la estructura
+de la base de datos de WordPress.
+Pero yo no ha sido mi caso.
+Yo lo puse generar una página en limpio
+y por eso me aparece una base de datos vacía.
+Entonces acá tendremos que cargar
+la estructura de nuestra base de datos.
+Para cargar la estructura de mi base de datos
+quiero dirigirme a phpMyAdmin
+pero la del local
+donde tengo mi proyecto montado
+me voy a dirigir a la base de datos
+en cuestión que estoy usando
+y la voy a exportar.
+La voy a exportar como un SQL.
+Ya la tenemos acá.
+Y una vez que ya la descargué esa estructura
+me dirijo por aquí
+y la importamos.
+Voy a ver andar esto.
+Como lo importo
+simplemente me dirijo acá donde dice importar.
+Selecciono
+la estructura que acabo de crear
+en descargar
+y le vamos a dar en
+cargar. Cargar y continuar.
+Voy a esperar un momento
+a que se suba.
+Me dice que las consultas se ejecutaron correctamente.
+Y por acá tengo
+todo lo que necesito
+para que funcione correctamente
+mi aplicación.
+Perfecto.
+Entonces, veamos.
+Si ahora yo vuelvo por acá
+y actualizo
+veo que se logra cargar correctamente
+mi proyecto.
+Vamos a intentar iniciar sesión.
+Le voy a dar en login
+y me esta marcando el siguiente error.
+Este error me indica que
+está intentando abrir
+una página llamada login
+y la página login no existe.
+Y si está intentando abrir una página llamada login
+significa que los htaccess
+no se han configurado correctamente.
+Entonces lo que yo quiero hacer
+es dirigirme aquí
+a mi carpeta public html
+y por desgracia como menciono
+hay archivos que no aparecen acá como para verificar
+si está o no está el archivo htaccess.
+En la carpeta public html vamos a cargarlo.
+Como lo cargo
+nuevamente nos vamos a cargar
+seleccionar un archivo
+y vamos a buscar nuestro archivo en cuestión.
+Nuestro archivo
+se encuentra dentro del disco C
+en la carpeta chan
+en la carpeta htdocs
+en la carpeta larabel
+facturación web
+y vamos a ingresar a la carpeta public
+ya que en esa carpeta public
+tenemos nuestro archivo
+.htaccess. Vamos a cargarlo.
+Le voy a dar seleccionar
+abrir
+y listo.
+Esto ya cargó mi archivo.
+Vamos a volver
+aquí no aparece
+pero ya sabemos que está ahí.
+Entonces ahora si, si yo retorno
+por acá y le voy a abrir
+ahora si me deja ingresar.
+Perfecto. Vamos a probar
+para ver si todo funciona correctamente.
+Quiero
+venir por acá, iniciar sesión
+y le vamos a dar
+y listo. Acá ya tendría
+mi proyecto larabel
+desplegado y
+funcionando. Muy bien.
+Hay algo más
+que todavía tendríamos que solucionar
+y es en el caso de que tú estuvieras trabajando
+en el disco público.
+Cuando tú trabajas con el disco público
+lo que tienes que hacer es dirigirte
+a tu proyecto
+y en la carpeta public
+que es la carpeta
+que tenemos por acá, debemos crear
+un acceso directo hacia la carpeta stories.
+En el próximo capítulo
+vamos a ver cómo podemos hacer eso
+desde un hosting compartido.
+Pero antes de eso quiero explicarte
+cómo sería el proceso de subir
+o desplegar un proyecto larabel
+en hostinger.

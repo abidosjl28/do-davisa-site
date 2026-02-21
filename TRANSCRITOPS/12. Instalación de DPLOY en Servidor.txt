@@ -1,0 +1,20 @@
+A partir de este capítulo vamos a ver cómo podemos hacer deploy de nuestra aplicación Laravel, pero de una manera ya más automatizada.
+Para hacer eso me gustaría que hagan lo siguiente. Vamos a cerrar ya toda esta parte y quiero que se centren en esta parte que dice documentación.
+Vamos a abrirlo y me redirigen a esta página que tenemos acá.
+Aquí me interesa que busquen en esta parte este que dice Deploy. Deploy es un programa que nosotros vamos a tener que instalar en nuestro servidor para poder automatizar todo el proceso de display de Laravel.
+Muy bien, acá que me indica? Acá lo que me indica es que yo debería conectarme a mi servidor como usuario root.
+Para conectarme como usuario root vamos a hacer lo siguiente.
+Quiero que abran la terminal de git bash y una vez que se encuentren acá lo que tienen que hacer es escribir ssh seguido de la IP, perdón, seguido de la palabra root vamos a colocar un arroba y finalmente vamos a colocar la IP de nuestro servidor.
+Acá no sé qué pasó, copio nuevamente y pego.
+Listo, ahora si nuestra máquina tiene los permisos para poder acceder a ese servidor va a ingresar y nosotros cuando creamos nuestro servidor le agregamos la llave ssh de nuestra computadora.
+Entonces si yo le doy enter va a buscar esa llave y por lo tanto me debería permitir el acceso.
+Le voy a dar en enter, acá como es la primera vez que ingreso me pregunta si confío en esta conexión, le voy a decir que sí y listo.
+Me permitió el acceso a mi servidor, acá lo tenemos.
+Vamos a limpiar esto un poco y vamos a seguir leyendo la documentación.
+Me dice que para yo poder instalar deploy lo que tengo que hacer es ejecutar el siguiente comando.
+Vamos a copiarlo, vamos a dirigirnos aquí y vamos a pegarlo.
+Ahora le voy a dar simplemente enter y listo.
+Me dice que deploy se ha instalado correctamente y se ha instalado en la siguiente ubicación, en user local bin deploy.
+Que es justamente donde me indicaba acá que se va a instalar, user local bin deploy.
+Listo, eso sería todo, ya tenemos instalado deploy.
+En el próximo capítulo vamos a ver cómo inicializar deploy y cómo pasarle la información de nuestro repositorio para que puedan hacer la conexión.

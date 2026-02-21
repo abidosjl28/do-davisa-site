@@ -1,0 +1,20 @@
+actualmente cuando nosotros ingresamos a nuestro proyecto nos aparece este mensaje feo que dice que
+nuestro sitio no es seguro, para solucionar esto lo que tendríamos que hacer es instalar un
+certificado SSL, instalar un certificado SSL en nuestro sitio con crowd panel es sumamente
+sencillo, lo único que tendríamos que hacer es dirigirnos a nuestro crowd panel, ingresar a
+nuestra sección de sitios, administrar nuestro sitio y una vez que nos encontramos acá debemos
+dirigirnos a esta opción que dice SSL TLS le damos click y para agregar un nuevo certificado SSL
+lo único que tendríamos que hacer es darle click a este botón que dice acciones, darle click
+donde dice certificado let script nuevo y una vez que hemos seleccionado esto me dice que va
+a agregar un certificado tanto para facturación web.p como para www.facturacionweb.p que son
+los dominios con los cuales vamos a ingresar, ahora simplemente tendríamos que darle click al
+botón que dice crear e instalar y va a proceder a crear el certificado y luego instalarlo en
+nuestro sitio web, como ven me dice que mi certificado ya fue creado con exit, muy bien
+entonces vamos a ingresar a nuestro sitio web voy a dirigirlo por acá y voy a colocar
+facturacionweb.p y como pueden visualizar ahora ya no me aparece ese mensaje de sitios
+no seguro, me aparece esto y si doy click acá me dice que la conexión es segura, perfecto.
+Ahora en el hipotético caso de que todavía te siga apareciendo el mensaje de que sitios
+no seguro es probable que se haya quedado cachado en tu navegador la información de
+tu página como estaba anteriormente, entonces para solucionarlo lo único que tendrías
+que hacer es limpiar la cacha de tu navegador y listo, desde ese momento vas a ver la
+página de esta manera y sin más eso sería todo por este capítulo.

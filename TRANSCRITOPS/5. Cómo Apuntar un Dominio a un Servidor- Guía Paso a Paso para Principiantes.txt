@@ -1,0 +1,83 @@
+en este capítulo vamos a ver cómo podemos adquirir un dominio y lograr que
+ese dominio apunte hacia mi VPS, particularmente la empresa con la cual yo
+suelo trabajar para contratar dominios es esa que tenemos acá que se llama
+Over, aquí por ejemplo podemos buscar algún dominio, por ejemplo cursos
+programación, le damos enter y acá me van a dar un listado con el dominio
+y diferentes extensiones, .com, .online, .... lo que sea y me dicen el precio
+por ejemplo si contrato .art me sale 4.99 si quiero contratar .com de
+repente me sale un poco más caro por tener el .com pero ya sería
+cuestión de que tú busques la extensión que quieres, por ejemplo voy a
+colocar .com y me va a decir que si quiero adquirir con un .com me sale
+17.99 dólares y es más me está saliendo un poquito caro creo porque hay
+palabras clave, hay una palabra clave llamado cursos y otra palabra clave
+que se llama programación, normalmente está un poco más barato, ahora bien
+si tú decides comprar tu dominio utilizando Over yo te voy a dejar en
+la descripción del vídeo un link de descuento, en este caso si el descuento
+no es mucho es de dos dólares pero te va a servir para ahorrar unos
+cuento con un dominio, el dominio no lo compro acá lo compré en esta página y
+es porque necesitaba que este dominio tenga la extensión .p y la
+que me proporcionaba el .p era esta página entonces aquí lo adquirido
+para que nosotros podamos hacer que el dominio apunte hacia acá hacia
+nuestro VPS lo que tendríamos que hacer es configurar nuestros DNS para
+hacer que apunte para que este proceso de configurar el DNS se
+crezca lo más posible a todos ustedes lo que quiero hacer es lo siguiente voy a
+especificar que los DNS no quiero que se administren directamente desde este
+panel sino que me gustaría administrarlo desde DigitalOcean para
+hacer eso lo que tendríamos que hacer es ingresar a la configuración de
+nuestro dominio, voy a esperar un momento ingrese y tengo que buscar sea
+donde sea donde te encuentres según donde ya contrató tu dominio tienes
+que buscar la opción nameservers por defecto el que va el que va a administrar
+todos los DNS es esta misma página pero yo voy a especificar que me
+interesaría que lo administre DigitalOcean para pedir que lo
+administre DigitalOcean vamos a hacer clic acá a esta opción y se va a
+habilitar estos nombres de servidores muy bien aquí lo que voy a
+hacer es agregar esto voy a agregar ns1.digitalocian.com luego por
+acá agrego ns2.digitalocian.com y por acá agrego ns3.digitalocian.com
+con esto que vamos a hacer con esto vamos a decir que este dominio no va
+a ser administrado por este cliente que tenemos acá sino que va a ser
+administrado por DigitalOcean entonces vamos a cambiar los nameservers
+y ya está ahora una vez que hemos hecho esto lo próximo que tenemos
+que hacer es dirigirnos a DigitalOcean dirigirnos al iniciar
+sesión voy a darle login ahora una vez que nos encontramos acá vamos a
+abrir este que dice Manage y vamos a buscar este que dice Networking le
+voy a dar clic y desde aquí nosotros vamos a poder agregar dominios para
+agregar dominios vámonos a esta opción que dice Domains
+muy bien aquí vamos a decir que en mi caso el dominio que yo quiero
+agregar se llama facturaciónweb.p entonces este es el dominio que yo quiero
+agregar y que quiero que DigitalOcean se encargue de administrarlo le vamos
+a agregar dominio perfecto listo una vez que hemos hecho esto ya
+sabemos que DigitalOcean es el que se va a encargar acá ya por defecto ha
+agregado estos valores que se lo proporcionamos a nuestro dominio el
+NS1 DigitalOcean y demás ya aparece acá y ahora aquí vamos a hacer lo
+siguiente vamos a colocar un nuevo un nuevo registro un nuevo registro
+DNS acá en el hostname voy a colocar un
+seguido de la IP de mi de mi VPS cuál es la IP de mi VPS esta es la cual nos
+estamos conectando entonces colocamos acá miren ni siquiera
+necesito colocarlo directamente simplemente darle clic acá DigitalOcean
+me proporciona aquellos servidores que yo ya tengo creados tengo este de
+acá y tengo este segundo que es de otro servidor voy a seleccionar el
+primero entonces selecciono a que servidor quiero que apunte y luego
+simplemente le damos en crear registro y listo tenemos un nuevo registro
+agregado y por acá lo tenemos con eso estamos especificando si alguien
+escribe el dominio facturación web punto p lo que quiero que hagas es que
+los redirecciones hacia la IP 138.197.88.73
+pero también quiero agregar un sub dominio por si es que hay alguien que
+escribe www.facturacionweb.p el www ya no se suele usar pero en el
+caso de que alguien lo escriba es decir escriba así también quiero que
+apunte hacia el mismo dominio entonces me dirijo por acá y selecciono
+y listo entonces sea que coloque esto o sea
+que coloque esto va a apuntar a mi mismo a mi mismo bps por último para
+terminar me gustaría agregar un último DNS y es el siguiente uno que se
+llame cp.facturacionweb.p y de igual manera este debe apuntar hacia
+nuestro bps y le vamos a dar en crear para que voy a utilizar esto yo
+quiero que cuando ingresemos a nuestro cloud panel es decir acá no
+tenga por la necesidad de colocar el IP sino que quiero acceder a este panel
+a través de este sub dominio cada vez que coloque cp.facturacionweb.p
+se debe abrir este panel pero lo vamos a dejar por el momento aquí
+porque porque más adelante vamos a ver cómo se utiliza porque ahorita lo
+que me interesa es que los DNS se actualicen y esto puede demorar un
+puede demorar 15 minutos 20 minutos una hora así que quiero esperar que se
+que se actualice y mientras tanto vamos viendo lo demás que es cómo
+crear un nuevo sitio web y cómo montarlo como es como desplegar nuestro
+proyecto en ese sitio web así que por el momento nos quedamos hasta aquí
+en este capítulo

@@ -1,0 +1,174 @@
+Lo que quiero lograr en este capítulo es que cada vez que nosotros actualicemos el repositorio
+automáticamente se ejecute el comando deploy deploy master. Para hacer eso tenemos que trabajar
+con algo que se llama webhook, que es esto de los webhooks, es que cada vez que se realice
+una acción dentro de mi repositorio lo que quiero que haga es que haga una petición hacia
+mi web. Mi web debe recibir esa petición y una vez que lo reciba debe ejecutar el
+comando en cuestión, el comando que va a ser el display. Entonces, primero vamos
+a configurar nuestra aplicación para recibir esa petición. Entonces me voy a dirigir
+por acá y quiero en primer lugar crear un nuevo controlador. Voy a abrir la terminal
+y vamos a crear el siguiente controlador php artisan make2.controller y vamos a crear
+un controlador que se va a llamar webhook controller y le vamos a dar enter. Listo,
+ya tenemos esto acá. Ahora vamos a dirigirnos a nuestro archivo de rutas web.php y en la
+ruta. Esta ruta vamos a decir que va a ser de tipo post. Vamos a crear una ruta de
+tipo post cuya ur inicial va a ser webhook. Vamos a colocar un slash y este webhook
+va a recibir las peticiones de gethook, entonces vamos a colocar por acá gethook.
+Perfecto. A esta ruta le vamos a asignar el control al controlador que generamos
+un momento llamado webhook controller y que se encargue un método que se llame gethook.
+Perfecto. Entonces cada vez que se haga una actualización de repositorio,
+gethook va a ser una petición hacia esa ruta. Va a ser una petición de tipo post.
+Ahora nosotros tenemos que ver la forma en la cual no le solicite a gethook un token
+ccrf ya que gethook no va a tener la capacidad de generar este token. Entonces
+lo que vamos a hacer es dirigirnos hacia la carpeta app, dirigirnos hacia la carpeta
+http, vamos a abrir la carpeta middleware y quiero abrir el siguiente middleware,
+el middleware verify ccrf token y dentro de este array llamado accept vamos a pedir que
+no solicites un token ccrf para esta ruta para que no haya ningún problema cuando
+gethook intente comunicarse. Perfecto. Una vez que hemos hecho eso lo que vamos a hacer
+es dirigirnos aquí a gethook y vamos a crear nuestro método. Voy a dirigirnos por acá,
+voy a colocar public function, mi método se debe de llamar gethook y vamos a recibir
+cualquier parámetro que puede ser mandado. Entonces lo recibimos, colocamos request,
+request. Ahora bien, ¿qué vamos a hacer acá? En primer lugar vamos a especificar hacia qué
+carpeta debe ingresar para poder hacer ese despliegue. Lo que debe hacer en este caso
+mi aplicación es ingresar hacia la carpeta home facturación web, aquí es donde debe ingresar
+para recién ejecutar el comando. Entonces quiero dirigirme por aquí y quiero definir
+el siguiente método, quiero llamar al método llamado putEmp y luego de llamar al método
+putEmp vamos a colocar por aquí unas comillas, vamos a definir una variable llamada home,
+vamos a darle un igual y aquí vamos a especificar la carpeta a la cual debe ingresar,
+es decir home facturación web, perfecto. Lo siguiente que quiero hacer es especificar
+dónde se encuentra instalado deploy, para especificar dónde se encuentra instalado
+deploy nuevamente voy a colocar, voy a llamar a putNB y vamos a colocar otra variable,
+esta variable se va a llamar patch y acá vamos a hacer lo siguiente, algo similar,
+en el caso de deploy se encuentra instalado dentro de una carpeta llamada usr,
+vamos a ponerla en minúscula, dentro de otra carpeta llamada local,
+luego vamos a colocar este slash, quiero colocar bin dos puntos slash usr slash bin dos puntos y slash bin
+lo demás lo voy a eliminar, quiero quedarme con lo siguiente y por último lo que quiero
+hacer es ejecutar el comando, para ejecutar el comando tenemos que llamar a la función
+shell exec y especificar qué es lo que quiero que se ejecute, en mi caso lo que yo quiero
+que se ejecute va a ser deploy deploy master, que es el comando que nosotros estuvimos
+ejecutando hace un momento, ahora luego de que se ejecute todo esto me gustaría mostrar
+un mensaje, para mostrar un mensaje podríamos hacer lo siguiente return response y quiero que
+aparezca el mensaje que diga webhub recibido y nada más y con un código 200, entonces en
+este punto lo que debería ocurrir es que si yo ejecuto este método se hace el deploy y una
+vez que se hecho el deploy me retorna el mensaje que tenemos acá, muy bien quiero usar esto
+pero también me gustaría definir lo mismo como una petición get, porque antes de que
+demandar el webhub me gustaría probarlo, me gustaría ver que en efecto esto está
+haciendo lo que yo espero, entonces vamos a dirigirnos por acá y vamos a actualizar
+nuestro repositorio, voy a colocar git add-a git commit-m actualización y vamos a actualizar
+el repositorio git push u origin master, listo, como acaba de actualizar el repositorio vamos
+a dirigirnos a nuestro terminal, nos conectamos como usuarios de sitio y una vez que nos hemos
+conectado hacemos deploy y le damos enter, empieza a clonar y voy a esperar un momento
+listo ya se hizo la nueva implementación entonces quiero dirigirme aquí al
+administrador de archivos y vamos a ver si en efecto se agregó, me dirijo acá facturación web
+punto p, ingreso a la última implementación, nos dirigimos a nuestro archivo de rutas a web
+punto php y en la parte final acá tenemos estos dos, perfecto, entonces vamos a hacer
+quiero ingresar a esa ruta para ver si se hace una nueva implementación para lo cual
+tendría que conectarme a esta url, cerramos esto y quiero verificar cuál es la última
+implementación, la última implementación se dio a las 11 y 22, entonces me dirijo por acá
+y vamos a ingresar a esa url, le doy enter y empieza a cargar, lo que esperaría es que
+después de que termine la implementación me muestre este mensaje, el mensaje webhook
+recibido, entonces voy a esperar un momento y luego continuo, muy bien ya termina de ejecutarse
+acá lo tenemos y ahora quiero revisar acá, la última implementación fue 11 y 22, si yo
+elizo me dice que la última implementación fue 11 y 24, entonces qué significa que he logrado
+ejecutar ese comando con éxito desde mi navegador, una vez que ya sabemos que funciona lo próximo
+que vamos a hacer es dirigirnos aquí a nuestro proyecto, a nuestro repositorio
+facturación web y vamos a hacer lo siguiente, diríjense a esta opción que dice settings,
+y una vez que han hecho esto diríjense a esta opción que dice webhooks y vamos a
+especificar que queremos agregar un nuevo webhook, ojo miren acá especifica que la
+petición lo va a hacer con pos, por eso nosotros hemos definido acá una ruta de
+tipo pos, muy bien vamos a darle simplemente en agregar webhook, me pide que me identifique,
+voy a identificar y lo primero que me indica es que debo especificar la url a la cual va a
+ser mandada, yo quiero que se mande a esta url, entonces vamos a copiar, le voy a dar en
+copiar, me dirijo por acá y le vamos a dar en pegar, perfecto, ahora qué más debemos hacer,
+nosotros no queremos que cualquier persona que ha dado una petición de tipo pos a esta
+ruta pueda hacer un despliegue, nosotros sólo queremos que la el único que puede ser un
+despliegue haciendo una petición a esa ruta sea gitcoop, entonces nosotros podríamos especificar
+por acá alguna clave secreta, alguna clave secreta para que sólo debería saber los dos
+personas, una sería gitcoop que es acá y otra debería ser mi aplicación, por ejemplo yo
+voy a colocar un secreto que se llame prueba, la idea sería que fuera mucho más complejo pero
+yo voy a ponerle simplemente prueba y vamos a decir que me interesa mandarlo con un
+tipo json, entonces coloco esta manera y luego simplemente le vamos a dar en crear, miren
+ah me está faltando escoger cuándo queremos que se active los webhooks, yo quiero que se
+mande una petición a esta url cada vez que hagamos el evento push, es decir cada vez que
+coloquemos git push u origin master en ese momento quiero que se haga una petición hacia
+esta url, entonces simplemente le vamos a dar en agregar webhook, ahora lo que tocaría sería
+verificar, ¿cómo verificamos? por ejemplo vamos a dirigirnos aquí a facturacionweb.tes
+y quiero modificar esto, este etiqueta p que agregué que decía prueba quiero eliminarlo
+entonces me voy a dirigir por acá a resource, view, vamos a abrir esta vista llamada welcome.lay.php
+y vamos a eliminar este etiqueta p, le voy a dar en actualizar, ya no está y ahora quiero
+que se vea reflejado en mi servidor, entonces si esto funcionó si esto va a funcionar significa
+que si ahorita yo actualizo el repositorio automáticamente también se va a actualizar
+acá, entonces volvamos por acá demos nuevamente el comando git add-a git commit-m le damos un
+subir actualizar repositorio y voy a esperar unos 30 segundos hasta que se vea reflejado
+los cambios, listo ya pasaron los 30 segundos así que vamos a verificarlo, lo primero que
+quiero hacer es verificar que acá haya habido un nuevo deployed, el último fue las 11.24 vamos
+a refrescar esto y ahora me dice que había un deployed a las 11.30, ahora por acá veo otro 11.28
+lo que ocurre es que al generar o agregar este webhook también se ha producido un evento
+push por lo tanto ahí también genero el deployed más el deployed que acabo de hacer
+al actualizar el repositorio tengo dos, pero lo importante es que podemos visualizar los
+cambios acá satisfactoriamente, que más volvamos acá y me interesa ver si desapareció
+le voy a dar clic en prueba y vemos que los cambios se vieron reflejados
+aparentemente todo está funcionando correctamente no obstante si nos dirigimos
+a nuestro webhook actualizamos y nos vamos acá a los envíos que ha habido, miren
+tenemos errores si yo lo analizo ingreso acá me dice que yo he tenido una respuesta 504
+o mejor dicho no he tenido una respuesta, lo que está ocurriendo es lo siguiente
+cuando nuestro webhook hace una petición hacia mi ruta lo que hacemos nosotros es ejecutar
+todo este comando el comando que nosotros tenemos acá y esto se demora aproximadamente
+unos 30 segundos 30-33 segundos en realizar todo el proceso y luego recién de ejecutar
+mi webhook se cansó de esperar acá me indica que sólo esperó 10 segundos y por lo tanto nunca
+recibió la respuesta y me marca ese error el error de 504 ahora ustedes si quieren lo dejan
+ahí porque como vemos si está funcionando si se está llegando a ejecutar esto simplemente
+que el webhook no está recibiendo la respuesta de acá pero si tú quieres que lo llegue a
+y poner este job en cola de tal manera que automáticamente reciba la respuesta y en un
+segundo plano se va ejecutando esto pero eso quiero hacerlo en el próximo capítulo lo
+que quiero hacer ahorita es recibir la contraseña que le pasamos previamente aquí quiero
+recibirlo desde aquí desde mi desde mi desde mi proyecto y verificar que en efecto sea la
+específica para hacer eso lo único que vamos a hacer es lo siguiente por aquí vamos a definir
+una variable una variable que se llame payload y vamos a decir que quiero recepcionar todo
+lo que se mande como parámetro vamos a colocar por acá recues y recuperamos todo
+su contenido luego de hacer eso por aquí vamos a definir otra variable una variable
+que le vamos a dar de nombre signature y acá vamos a hacer lo siguiente quiero
+generar una cadena de la siguiente manera lo primero es colocar esto ya uno vamos a
+colocar un igual y luego vamos a codificar lo que se mandó lo que hemos recuperado los
+parámetros el cual lo he recuperado en una variable llamada payload y acá como tercer
+parámetro vamos a colocar la clave de prueba que pusimos cuál fue la clave de prueba creo
+que me parece que le di de nombre prueba listo entonces recuperamos codificamos y
+una vez que hemos hecho esto por acá vamos a poner una condicional y en esta condicional
+vamos a preguntar lo siguiente vamos a preguntar si lo que llegó en la cabecera en el campo
+llamado xhub signature es diferente que lo que tenemos en este valor llamado signature si es
+diferente significa que la contraseña no coinciden y por lo tanto lo que deberíamos
+hacer es impedir que se ejecute lo demás y para eso simplemente colocamos un abort 403
+y acción no autorizado un mensaje o podríamos colocar de repente invalid signature
+caso contrario lo que debería ocurrir es que se ejecuta el deploy y una respuesta
+entonces vamos a verificarlo en primer lugar me gustaría por el momento desactivar este
+webhook vamos a desactivarlo para que para que primero actualicemos ese repositorio
+y generamos un nuevo despliegue para que aparezca ya en mi proyecto entonces me dirijo
+por acá y ad guión a git commit guión m actualización un git push origin master
+espero un momento y ahora simplemente nos dirigimos por acá a nuestra terminal en la cual ya
+estoy conectado por ssh y ejecutamos nuevamente nuestro deploy deploy master muy bien el
+día terminó vayamos un momento a verificarlo quiero ver que en efecto mi controlador
+es actualizado me dirijo hacia htdocs me dirijo hacia facturación web me dirijo
+al current app htp controllers webhook controllers y veo que no se ha actualizado
+o es que no actualiza acá a ver una última vez nuevamente htdocs facturación web current
+vuelvo a ingresar a la carpeta app htp controllers y webhook controllers no no
+sé que no se ha actualizado no sé qué ocurrió déjenme verificar acá déjenme
+verificar mi repositorio un momento voy a ingresar acá a la carpeta app htp controllers
+webhook controllers y acá tampoco se ha actualizado dice que no se llegó a actualizar
+algún problema o recién se está actualizando entonces se retorno acá ahora si debería
+ver el cambio en efecto y vamos a proceder nuevamente a hacer el deploy entonces pero
+un momento y continuo muy bien ya terminó si volvemos por acá verificamos los cambios
+nos vamos a la carpeta htdocs facturación web current app htp controllers y webhook
+controllers acá podemos verificar que está comprobando la contraseña entonces
+volvamos a activar nuestro webhook me dirijo por acá le voy a dar en editar y quiero
+volver a activarlo y para verificar que todo va a funcionar correctamente vamos a hacer un
+cambio nuevamente acá me dirijo nuevamente a welcome y lo que elimine hace un momento
+vamos a volver incluir incluyó nuevamente la etiqueta prueba si verifico por acá se prueba
+acá lo tenemos entonces sería cuestión ahora de volver a actualizar el repositorio y ver que
+todo siga funcionando correctamente miremos la hora 11 44 veamos la implementación la última
+implementación fue a las 11 y 42 entonces me dirijo por acá control eñe git add guion a
+commit guion m actualización y git push origin master listo me voy a esperar los 30
+segundos que se demoren en implementar y luego continuo listo ya debe haber cargado vamos
+a verificarlo si doy actualizar archivos me sale que la última implementación fue a las
+11 45 y si volvemos por acá y actualizo acá está el cambio que hice perfecto muy bien
+el próximo capítulo vamos a ver cómo solucionar esto no quiero que me marque acá errores cada
+vez que hay un push sino que me gustaría colocar esto en cola este proceso que se demora
+un montón me gustaría colocarlo en cola y que ni bien ejecutemos el método hay una respuesta
+y esto se ejecuta en un segundo plano pero eso vamos a verlo en el próximo capítulo

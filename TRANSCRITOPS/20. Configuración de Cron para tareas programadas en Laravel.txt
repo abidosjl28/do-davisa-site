@@ -1,0 +1,99 @@
+En este capítulo quiero ver cómo nosotros podemos trabajar con tareas programadas.
+Cuando necesitamos que se ejecuten tareas programadas, cuando queremos que cada cierto tiempo se verifique algo.
+Por ejemplo, imaginemos que estás trabajando con un sistema de suscripción y quieres que todos los días a medianoche
+verifiques qué usuarios mantienen una suscripción y los que no se les niega el acceso.
+Entre muchas otras cosas que puede ocurrir.
+Entonces, lo que quiero hacer es dirigirme a la documentación del árabe,
+vamos a dirigirnos acá y quiero que busquen esto que se llama Scheduler.
+Por acá me indica cómo yo puedo trabajar con tareas programadas.
+Lo que me indica es que nos dirigamos al siguiente a la siguiente carpeta, a la carpeta app, console
+y abramos este archivo llamado kernel.php y luego debemos centrarnos en este punto,
+en este método que tenemos acá y aquí podemos colocar la acción que queremos que se realice.
+Aquí me damos un ejemplo que llame a esta variable llamada el chédule, luego llamamos una función callback
+y dentro de esta función callback vamos a especificar la acción que queremos que se realice.
+Por ejemplo, a mí me interesaría verificar simplemente que esto se esté funcionando, la tarea programada
+y que me imprima un log con el siguiente mensaje, con el mensaje que tenemos acá.
+¿Qué es imprimir un log?
+Significa que me va a mostrar o va a imprimir este texto, el texto que nosotros tenemos acá
+y lo voy a imprimir en la siguiente carpeta, en el siguiente archivo,
+en la carpeta storage, app, perdón, storage logs y por aquí me va a generar un archivo llamado logs
+y ahí debería generarlo, entonces vamos a ver si en efecto esto ocurre.
+Para hacer funcionar esta tarea programada lo que nosotros tendríamos que hacer es configurar un cron
+pero en mi caso como yo estoy trabajando con windows no puedo configurar un cron
+pero Laravel me proporciona un comando que va a simular ese funcionamiento.
+Lo que quiero que busquen es el siguiente, el chédule work, entonces voy a copiarlo, voy a dirigirlo por acá
+y vamos a pegar esto por aquí, php artisan el chédule work, antes de... me estoy olvidando algo importante
+aquí si yo le pongo daily significa que estaría esperando que esta acción se ejecute todos los días, una vez al día
+pero yo no quiero esperar un día para ver que se ejecute, sino que quiero cambiarlo y quiero especificar que se ejecute cada minuto
+entonces vamos a colocar por acá every minute, listo. Una vez que he hecho esto voy a abrir nuevamente la terminal
+y vamos a volver a ejecutar este comando php artisan chédule work y voy a esperar un minuto
+aproximadamente para que esta tarea se ejecute. Listo, ya se ejecutó esta tarea programada y por aquí
+aparece un nuevo archivo llamado Laraveloc y aquí me especifica la tarea que se acaba de ejecutar
+luego va a pasar otro minuto y se va a volver a ejecutar eso y por acá me va a aparecer nuevamente el mismo mensaje
+ahora es posible que cuando tú abras este archivo encuentres mucha más información de la que estás viendo acá
+lo que sucede es que cada vez que ocurre un error acá se va a imprimir ese error, entonces dependiendo de cómo se ha estado manejando tu proyecto
+puede que tengas una infinidad de información acá, entonces lo que tú podrías hacer es simplemente seleccionarlo con control A
+eliminarlo, dejarlo en blanco y cerrarlo y vas a ver que igual luego cuando se vuelve a ejecutar
+por ejemplo ahorita se acaba de volver a ejecutar va a agregar un nuevo registro acá
+y va a ir ejecutándose y ejecutándose y ejecutándose. Muy bien, me interesa hacer lo siguiente
+Me interesa cerrar esto y vamos a actualizar esa información a nuestro servidor, ¿por qué?
+porque quiero que lo que acabo de hacer también aparezca en mi en mi proyecto en desarrollo
+en producción perdón, entonces vamos a dirigirnos por acá y vamos a actualizar nuestro requisitorio
+git add git commit-m actualización y un git push u origin master
+listo ya se actualizó y voy a esperar los 30 segundos que se demoran en actualizar en el servidor
+muy bien ya debe haberse actualizado, vamos a dirigirnos a nuestro proyecto aquí y
+vamos a hacer dos cosas, lo primero es verificar que en efecto se haya actualizado
+me dirijo a administrar los archivos, me dirijo a la carpeta htdocs, me dirijo a la carpeta
+facturación web.p, ingreso al current, ingreso a la carpeta app console y abrimos el archivo
+kernel.php y acá en efecto está agregado perfectamente, lo próximo que yo quiero hacer
+es ingresar nuevamente a mi proyecto facturación web.p, dirigirme al charret storage y vamos a abrir
+la carpeta logs como vemos todavía no se ha generado ningún log, aquí debería generarse
+nuestro archivo log info.log el que el ala de .log perdón que fue el mismo que tenemos acá
+ahora para que esto funcione de igual manera que hicimos anteriormente tendríamos que
+ejecutar el comando php artisan schedule room y cómo ejecutamos eso para ejecutar eso podemos
+trabajar con o podemos configurar un cron para configurar un cron vamos a dirigirnos a este
+que se llama tareas programadas muy bien y por aquí vamos a agregar una nueva tarea programada
+para agregar una tarea programada me dirijo por acá y tengo que especificar
+cada cuánto tiempo quiero que se ejecute mi cron puede ser cada minuto puede ser cada cinco
+minutos puede ser cada tres horas cada día a las 4 m y miren conforme yo voy escogiendo una
+plantilla va cambiando el valor que se coloca acá cada uno de estos valores que tenemos acá
+es decir esto representa al minuto a la hora al día al mes y a la semana si nosotros lo
+dejamos todo en asterisco lo que significa es que se va a ejecutar cada minuto cada minuto
+cada hora cada día cada mes y cada semana pero nosotros si queremos podemos ir modificando
+esto por ejemplo si yo quisiera que se ejecute todos los días a una determinada hora por
+ejemplo a las 2 de la mañana yo podría colocar aquí 2 y 0 entonces si hago eso
+significa que se va a ejecutar todos los días porque acá lo dejo en asterisco es decir cada día
+cada mes cada semana pero a las 2 de la mañana esa es la hora en la cual se ejecutaría mi cron
+pero en este caso yo quiero que se ejecute cada minuto porque porque yo he programado una
+tarea para que se ejecute cada minuto listo una vez que he hecho esto lo próximo que
+tenemos que hacer es especificar qué acción queremos que se realicen para eso tenemos que
+llamar a php aquí ya me dan un comando donde se encuentra php se encuentra dentro de user
+bin php 8.1 y lo próximo es especificar el comando que quiero que se ejecute yo quiero
+que se ejecute el comando artisan y dicho comando el comando artisan se encuentra dentro
+de home facturación web htdocs facturación web.p debe ingresar a la carpeta current aquí
+es donde se encuentra el comando artisan y seguido del comando schedule work entonces copio
+también esto y pego esto por acá pero en sí no vamos a ejecutar schedule work sino que
+vamos a ejecutar schedule run el schedule work lo que hacía era simular el cron por eso se
+me dice por eso cada minuto empezaba a ejecutarlo no pasado minuto volvió a ejecutar pasado
+minuto volvió a ejecutar pero en este caso no tenemos que simular un cron porque estamos
+configurando el cron entonces lo que vamos a hacer es colocar acá el comando schedule run
+el comando schedule run lo que va a hacer es cada minuto porque eso es lo que hemos configurado
+acá va a ejecutar todo este va a volver a ejecutar la tarea que hemos hemos definido acá
+y nada más eso sería todo con eso habríamos configurado nuestro cron si yo le doy en añadir
+tarea programada lo que esperaría es que pasando un minuto tendría un log entonces
+voy a esperar un par de minutos para que se ejecuta varias veces y luego vamos a revisar
+el archivo log para ver qué tenemos ahí muy bien ya pasó un par de minutos así que ya debe
+haberse ejecutado por lo menos dos veces así que voy a dirigirme al administrador de archivos
+vamos a dirigirnos hacia la carpeta htdocs facturación web.p vamos a dirigirnos a aquí
+a la carpeta chart y storage logs y miren por aquí ya apareció apareció el archivito
+llamado Laravel.log y acá tenemos que se ha ejecutado tres veces me dicen el momento
+el día en que se ejecutó se ejecutó a las 3 y 2 3 y 3 y 3 y 4 entonces hemos logrado
+configurar correctamente nuestro cron y bueno en este caso voy a desactivar el cron porque
+porque simplemente lo hizo para explicar no lo necesitan en este momento voy a dirigir
+a tarea programada voy a darle en eliminar me pregunta si estoy seguro y esta parte que
+también también simplemente fue para explicarlo así que lo voy a eliminar y listo muy bien
+sólo queda un capítulo que me gustaría explicar y es cómo generar un backup un
+respaldo de nuestro proyecto tanto en este proyecto como en nuestra base de datos porque
+nosotros nunca sabemos cuando esto puede empezar a fallar y necesitamos poder recuperar
+el proyecto tal y como lo teníamos así que entonces eso veremos en el próximo capítulo
+que será el último

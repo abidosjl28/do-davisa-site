@@ -1,0 +1,249 @@
+A partir de este capítulo vamos a entrar a la parte más interesante del curso y es ver cómo podemos trabajar con un BPS
+Y lo primero que tendríamos que hacer es contratar un BPS
+Nosotros podemos contratar BPS en muchos lugares, por ejemplo Hostinger nos permite contratar BPS
+Pero en mi caso yo lo voy a hacer desde DigitalOcean
+Dicho esto, si tú decides también crear tu BPS en DigitalOcean
+Yo en la descripción del video te voy a dejar un link para que tengas un descuento de 200 dólares
+Lo único que sí es que ese descuento solo tiene una vigencia de 60 días
+Luego de los 60 días te van a empezar a cobrar dependiendo del método de pago que tú hayas elegido
+Muy bien, entonces quiero dirigirme a Google y vamos a buscar por acá DigitalOcean
+O simplemente digitan digitalocean.com
+Lo primero que tienen que hacer es crearse, registrarse
+Van a dirigirse acá
+Y se pueden registrar ya sea con una cuenta de Google, con una cuenta de Github o con su correo electrónico
+Aquí a la hora de registrarse les van a pedir que coloquen una información de pago
+Pero no se preocupen, no les van a cobrar absolutamente nada
+Ya que DigitalOcean te va a empezar a cobrar cuando tú ya hayas contratado un servicio
+Y te va a empezar a cobrar después de un mes de facturación
+Pero aún así, si tú te estás registrando con el link que yo te estoy dejando, recuérdate
+Recuerda que tienes 200 dólares de crédito, validos por 60 días
+Así que en realidad te empezarían a cobrar de acá 3 meses aproximadamente
+Los dos primeros meses te saldrían gratis
+Y recuerda que siempre te van a cobrar solo si es que tienes un servicio contratado
+Si no tienes un servicio contratado, no te van a cobrar absolutamente nada
+Pero te piden la información de pago para tenerlo ahí en el caso de que llegues a contratarlo
+Muy bien, yo ya cuento con una cuenta de DigitalOcean
+Entonces lo que voy a hacer simplemente es iniciar sesión
+Me voy a dirigir por acá
+Y voy a iniciar sesión con mi cuenta de Google
+Le voy a dar Iniciar
+Y me va a mandar a este panel, al panel que tenemos acá
+Ahora, ¿cómo se crea un VPS?
+Para crear un VPS lo que tengo que hacer es darle click a este botón que dice Create
+Y luego vamos a darle click a este que dice Droplets
+Y me va a redirigir hacia este panel
+Nosotros tenemos varias opciones, varios precios para poder contratar nuestro VPS
+Tenemos desde 5 dólares
+Ustedes vamos desde 6 dólares
+Miren, y tú sigues desde 4
+El precio va a depender de los recursos que tú quieras contratar
+Por ejemplo, el de 4 dólares solo te da una memoria de 512
+Hasta 500 GB de transferencia
+Conforme más pagues, más recursos tienes
+Tenemos también CPUs regular
+Tenemos CPUs premium
+CPUs en AMD
+Entonces ya acaba de depender mucho de qué es lo que necesitas
+Si por ejemplo solo te vas a subir una única página en tu VPS
+Entonces de repente quizás te convenga el de 4 dólares o el de 6 dólares
+Y ya conforme vayas subiendo más páginas a tu VPS
+Necesitarías más recursos y más capacidad para almacenar
+Entonces, para empezar yo te recomendaría que contrates el de 6 dólares
+Y ya va a depender cómo vamos midiendo los recursos que se van consumiendo
+Para ver si adquieres una de mayor dimensión o no
+Pero dejemos en el de 6 dólares
+Ahora, dicho esto
+Lo próximo que vamos a hacer es escoger dónde queremos que se cree nuestro VPS
+Tenemos todas estas opciones
+Tenemos Nueva York, San Francisco
+Aquí lo ideal sería que tú escojas la que se encuentre más cerca a donde tú vives
+O a donde se encuentre más cerca al grupo de personas que más ingresan a tu sitio web
+Por ejemplo yo voy a colocar Nueva York
+Aquí es donde quiero que se cree mi droplet
+Listo
+Vamos a seguir bajando, vamos a seguir bajando
+Y lo próximo que tenemos que especificar es qué queremos que esté instalado en mi droplet
+Nosotros tenemos dos opciones
+La primera es pedir que se cree nuestro droplet, nuestro VPS
+Totalmente en blanco
+Simplemente instalándolo un sistema operativo
+Que puede ser Ubuntu, puede ser Fedora, Debian o cualquiera de los que tenemos acá
+Si hacemos eso, luego nosotros tendríamos que instalar manualmente todo lo que necesitaríamos
+Tendríamos que instalar PHP, tendríamos que instalar Node.js
+Y absolutamente todo lo que necesitaríamos
+Pero el problema es que si lo hacemos de esa manera el trabajo sería muy arduo
+Y no me gusta mucho hacerlo de esa manera
+Entonces nosotros vamos a pedir que aparte del sistema operativo ya venga instalado ciertas cosas
+Para eso vamos a dirigirnos a este que dice marketplace
+Y miren, por ejemplo podemos pedir que Nibian se instale
+Me coloque un WordPress
+Podemos pedir que venga instalado un cPanel
+Pero el problema es que si pedimos que venga un cPanel esto es de paga
+Así que tendríamos que contratar el servicio de cPanel para tenerlo montado
+Podemos por otro lado pedir que se instale con una distribución LAMP
+Que es esto de la distribución LAMP
+Que tenga instalado PHP, que tenga instalado Apache, MySQL, etc.
+Pero en mi caso no quiero ninguna de las que aparecen acá en este principio
+Yo quiero buscar que quiero que se instale con CloudPanel
+Con este que tengo acá
+El CloudPanel es un panel en el cual nos va a facilitar tremendamente la vida
+Nos va a permitir poder agregar sitios, tener un administrador de archivos similar a lo que vimos en los capítulos pasados
+Y lo mejor es que CloudPanel es gratuito
+Entonces esa es la razón por la cual vamos a instalar CloudPanel
+Ahora, el proceso para instalarlo en otros servidores tipo Hostinger es el mismo
+Tú vas a poder hacerlo, vas a poder instalar un VPS totalmente en blanco
+O te va a proporcionar una tienda en la cual tú puedes escoger qué instalar
+Si tú no estás siguiendo el curso con DigitalOcean sino por ejemplo con Hostinger
+Asegúrate de pedir que se instale con CloudPanel
+Para que a partir de ahí todo el proceso continúe igual
+Muy bien, ya pedimos que se instale con esto
+Sigamos
+Acá ya como les mencioné
+Tienes que escoger el precio
+Y ahora, aquí te dice que tú puedes colocar una llave SSH en tu droplet
+¿Qué es esto de la llave SSH?
+Posteriormente nosotros vamos a querer conectarnos a nuestro VPS desde una terminal
+Y para poder conectarnos desde una terminal tenemos que autorizar acá
+Cuáles son los dispositivos desde los cuales nosotros podemos conectarnos
+Por ejemplo, acá yo tengo algunos dispositivos que se pueden conectar a mi droplet
+Pero no tengo agregado las claves SSH de esta computadora en particular
+Entonces, voy a agregarlo
+¿Cómo se agrega una llave SSH?
+Para agregar una llave SSH quiero que se dirijan a mi sitio web
+Quiero que se dirijan a la sección de blog
+Y por acá quiero que busquen este artículo que se llama creación de claves SSH
+En este artículo explico cómo ustedes pueden generar una nueva llave SSH
+Generarlo o verificar si es que ya lo tienen
+Acá tengo para varios sistemas operativos
+Por ejemplo, acá explico para Windows
+Más abajo explico para Mac y para Ubuntu, para Linux
+Muy bien
+¿Cómo verifico si es que tengo una llave SSH generada?
+Para verificar vamos a abrir Git Bash
+Procuren que sea en Git Bash porque otras terminales a veces no funcionan estos comandos
+Yo lo voy a abrir en Git Bash
+Y primero voy a verificar si es que ya cuento con alguna llave SSH
+¿Cómo verifico?
+Simplemente copio este comando, me dirijo por acá y lo vamos a pegar
+Y le voy a dar Enter
+Voy a volver a hacerlo y acá lo tengo
+Y acá me indica las llaves SSH que yo he generado
+Acá tengo esta llave SSH
+Entonces me interesaría copiar esta llave SSH
+¿Cómo copio la llave SSH? Ejecutando este otro comando
+Aquí en la parte final, este que dice id-rsa.pub
+Tiene que ser el nombre de la llave SSH que he generado previamente
+Por ejemplo, yo anteriormente generé la llave SSH llamada id-rsa.pub
+Entonces ese mismo nombre lo genero acá
+Y simplemente le voy a dar Enter
+Y lo que va a ocurrir es que en mi portapapeles se acaba de almacenar mi llave SSH
+Y en el caso de que no haya generado ninguna llave SSH
+Para generarla ejecutas este comando
+Y acá lo colocas tu correo electrónico
+Muy bien, entonces yo ya tengo mi clave SSH
+Lo próximo que vamos a hacer es agregarlo
+Recuerden, acá podemos seleccionar todas las llaves SSH
+De nuestros dispositivos que queremos conectarnos luego a nuestro droplet
+Y lo pegamos
+Muy bien, luego de eso podemos colocar aquí un nombre identificativo para esta llave
+Por ejemplo, voy a colocar acá de nombre computadora principal
+Lo voy a seleccionar
+Ya se seleccionó por defecto
+Y ahora, yo quiero conectarme a este droplet desde dos lados
+Desde mi computadora principal y desde mi laptop
+Y yo previamente ya había agregado SSH para otro droplet que había creado
+Entonces voy a seleccionar ambos
+Quiero poder conectarme a mi droplet desde esas dos computadoras
+Listo
+Ya tenemos estos dos
+Acá le podemos dar un nombre a nuestro droplet
+Por ejemplo, yo le voy a dar el nombre CloudPanelCodedStreet
+Ese es el nombre que le voy a dar a mi droplet
+El cual lo voy a identificar más adelante
+Y nada más
+Eso es todo lo que podemos hacer por acá
+Por aquí...
+¿Qué más podríamos ver?
+Me dice que, por ejemplo, yo podría generar copias de seguridad
+Por el... ¿Cuánto era?
+El 10% o el 20% creo del precio que pagué
+Por ejemplo, yo estoy pagando 6 dólares
+Entonces el 20% sería 1.20 dólares
+Entonces si agrego 1.20 dólares adicional voy a tener la opción de agregar copia de seguridad
+Pero en nuestro caso no vamos a agregarlo
+¿Por qué? Porque vamos a ver otra forma de poder hacer eso de las copias de seguridad
+Muy bien
+Entonces simplemente lo dejamos acá
+Y le vamos a dar en crear droplet
+Crear droplet
+Y vamos a esperar a que este droplet se crea
+Acá se va a demorar un momento
+Así que yo voy a pausar el video y luego continuo
+Muy bien
+El droplet ya terminó de crearse
+Entonces lo que me gustaría hacer es ingresar a su panel
+¿Cómo vamos a ingresar al panel? De la siguiente manera
+Si yo lo doy en Get Started
+Acá me va a indicar qué es lo que yo tengo que hacer
+Me dice que lo que yo debo hacer es ingresar con mi P
+Y al final colocarle este punto 8443
+Entonces veamos
+Voy a copiar esto
+Me voy a dirigir por acá
+Y me dice que al final coloque el punto 8443
+Entonces vamos a darle un control C
+Vamos a colocar dos puntos y coloco esto acá
+Y en sí me dice que coloque
+Disculpen
+Que ingrese así, con HTTPS
+Seguido el nombre del IP, el número IP
+Y el punto que tenemos ahí
+Entonces vamos a colocar acá
+HTTPS IP y 8443
+Acá me advierte que me va a salir esto
+Pero que no me preocupe
+Que simplemente le de click en configuración avanzada
+Vamos a agrandar esto primero
+Configuración avanzada
+Y continuar
+Y tenemos acá
+Muy bien
+Como es la primera vez que estoy ingresando a este panel
+Me va a pedir que cree un usuario administrador
+Entonces vamos a crear un usuario administrador
+Mi nombre, Victor
+Mi apellido, Arana
+Usuario administrador, le voy a dar el nombre Atwin
+Y vamos a colocar un correo
+Victor.co.fr
+Por acá me dice que
+Coloco una contraseña
+Vamos a colocar una contraseña
+Y que seleccione mi sonoraria
+Mi sonoraria es del Lima
+Que debe estar acá en América Lima
+Ya que la tengo, América Lima
+Tuidad sería de cuestión de buscar la tuidad
+Marco esto
+Y le vamos a dar en crear un usuario
+Voy a esperar un momento a que el usuario se cree
+Listo, el usuario ya se creo
+Y ahora me pide que me identifique con el usuario creado
+Antes de iniciar sesión me gustaría cambiar el idioma
+No quiero que esté en inglés
+Sino que me gustaría que esté en español
+Entonces vamos a cambiarlo por Spanish
+Y inicio sesión
+Mi usuario se llama Atwin
+Y coloco mi contraseña
+Le doy identificarse
+Y ahora me encuentro acá, en este panel
+Acá por el momento solo tenemos estos dos
+El escritorio que ve el uso de memoria y demás de mi droplet
+Y acá tengo una opción para ir agregando sitios
+Sobre esta opción vamos a hablar en capítulos posteriores
+En el próximo capítulo vamos a ver cómo hacer que el dominio
+Que nosotros hayamos contratado
+Apunten hacia mi VPS que acabo de crear
+Así que por el momento nos quedamos hasta aquí en este capítulo
+Muchas gracias

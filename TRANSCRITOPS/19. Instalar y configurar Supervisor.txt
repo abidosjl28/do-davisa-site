@@ -1,0 +1,287 @@
+En el capítulo pasado nos quedamos en lo siguiente, en que nosotros necesitaríamos que este comando quede ejecutado sin la necesidad de tener abierto nuestro terminal.
+Si leemos la misma documentación, nos dice lo siguiente. Para mantener el keyword proceso ejecutándose permanentemente en segundo plano, debe utilizar un monitor de procesos como supervisor, para asegurarse de que el trabajo de la cola no deje de ejecutarse.
+Entonces, vamos a hacer clic en esto que dice supervisor. Muy bien. Y acá me dice qué es, ¿no? En producción, necesito una forma de mantener su keyword, proceso en funcionamiento, bla, bla, bla, bla, bla, bla.
+En esencia lo que me dice es que debo instalar supervisor en mi servidor. Entonces, eso es lo que vamos a hacer en este momento.
+Entonces, vamos a abrir primero nuestra terminal en Git Bash y vamos a conectarnos a nuestro servidor, pero como usuario root.
+Entonces, me dirijo por acá y vamos a reemplazar este nombre, facturación web, por root, arroba y mipe. Y le damos enter.
+Colpen, enter. Y perfecto, me logró conectar.
+Entonces, vamos a proceder a instalar supervisor. ¿Cómo se instala supervisor? Ejecutando el siguiente comando sudo apt-get install supervisor.
+Simplemente vamos a copiarlo, vamos a dirigirnos por acá y vamos a pegarlo. Y va a iniciar el proceso de instalación.
+Muy bien. Lo próximo que me indica es lo siguiente. Ya lo tenemos instalado.
+Lo que tenemos que hacer es configurar supervisor, para lo cual me dice que debo dirigirme a este directorio y dentro de este directorio lo que debo hacer es crear un archivo con extensión .config.
+Ahora, esto lo podríamos hacer de dos formas. Si estás familiarizado con el comando de Ubuntu, tendrías que ingresar a esta carpeta, crear un nuevo archivo, todo desde la consola.
+Particularmente yo no estoy muy familiarizado con Ubuntu, entonces me gustaría hacer esto.
+Yo tengo instalado un programa que se llama Filesilla. Y este programa me va a permitir poder conectarme a mi servidor y acceder a la estructura de sus carpetas.
+Para hacer esto simplemente abro este programa. Si no lo tienes, vas a tener que descargarlo. Simplemente busca en Google Filesilla y lo descargas y lo instalas.
+Una vez que lo tienes instalado, te diriges para acá, archivo, gestionar de sitios y vamos a crear un nuevo sitio.
+Por acá lo tenemos. Ahora, para crear un nuevo sitio quiero que hagas lo siguiente.
+Primero, el protocolo por el cual vamos a conectarnos va a ser por SSH. Entonces, cambia esto de FTP por SFTP SSH.
+Muy bien. Luego de eso tienes que especificar el servidor al cual vamos a conectarnos.
+El servidor al cual vamos a conectarnos es 104.236.69.117. Entonces voy a copiar este de acá, me dirijo por acá y pegamos la IP.
+El puerto lo dejamos tal cual. Y ahora tenemos que especificar cómo queremos identificarnos.
+Yo voy a decir que quiero identificarme con archivos de clave ya que quiero mandar mi llave SSH.
+¿Con qué usuario vamos a conectarnos? Vamos a conectarnos con el usuario root.
+Y acá tendríamos que buscar nuestros archivos de clave. Tiene que ingresar donde se encuentren sus archivos de clave.
+Si han seguido los pasos tal cual deberían encontrarse en el disco C, en usuarios, en su usuario y punto SSH.
+Aquí vamos a colocar todos los archivos y tenemos que seleccionar SSH ID-RSA y le vamos a dar a abrir.
+Perfecto. Una vez que ya tenemos esto, si yo le voy a conectar debería poder conectarse a mi servidor.
+Vamos a ver. Le dice conector. Me pregunto si confío en esto en este sitio. Le voy a decir que sí.
+Le voy a decir que confíe siempre en este sitio. Y le vamos a dar en aceptar.
+Y listo. En este punto ya nos encontramos en nuestro servidor.
+Ahora, lo que me indica la documentación es que yo debo ingresar a esta carpeta. A la carpeta etc supervisor config guiond.
+Entonces voy a darle un control C y voy a pegarlo acá que me interesa ingresar a esta carpeta.
+Y listo. Ahora me encuentro acá.
+Aquí me indica que yo debo crear un archivo con la extensión .config.
+Entonces vamos a copiar la extensión. Vamos a dirigirnos por acá.
+Y vamos a crear un nuevo archivo.
+A este archivo le vamos a dar el nombre de nuestro proyecto.
+En este caso mi proyecto se llama facturación web.
+Entonces le damos ese mismo nombre.
+Lo importante, no importa mucho el nombre que le des.
+Si importa para que sea identificativo porque este archivo que vas a crear va a servir para configurar
+o ver cómo funciona el comando php artisan keyword pero para este sitio web.
+Entonces sería bueno que haga referencia al nombre.
+Y le damos en crear. Le voy a dar en aceptar.
+Y listo. Ya tenemos nuestro primer archivo de configuración.
+Ahora quiero darle clic derecho y vamos a dar en ver editar.
+Le voy a dar en aceptar y voy a esperar a que se abra el archivo.
+Me pregunta con qué archivo quiero abrirlo.
+Lo voy a decir que con el blog de notas.
+Y acá vamos a hacer lo siguiente.
+Quiero copiar toda esta estructura que tenemos acá.
+Toda esta estructura. Vamos a pegarlo.
+Y esta es la forma en la cual se va a ejecutar el comando.
+Por ejemplo acá especifica que el comando que yo espero que se ejecute es el comando php artisan keyword.
+Ahora para eso nosotros tenemos que especificar dónde se encuentra instalado artisan.
+Nuestro comando artisan.
+Vamos a ingresar un momento a nuestro.
+A nuestro cloud panel.
+Nuestro comando artisan se encuentra instalado en la siguiente dirección.
+En home, facturación web, htdocs, facturación web.p, current.
+Si yo quiero acceder a artisan lo puedo acceder pero desde este directorio.
+Entonces vamos a copiar este directorio.
+Vamos a dirigirnos acá y vamos a reemplazar toda esta parte.
+Toda esta parte que tenemos acá lo reemplazamos por esta parte.
+Listo.
+Entonces con esto le estamos diciendo que ingrese a este directorio y recién ejecute el comando artisan keyword.
+Otra cosa que quiero cambiar es el nombre de programa.
+Este es un programa que estamos creando.
+Quiero que el nombre de programa coincida con el nombre de mi proyecto.
+Entonces voy a reemplazar esto y lo vamos a reemplazar por esto.
+¿Qué más?
+Aquí simplemente quiero dejarlo en keywords.
+Todo lo demás lo vamos a eliminar.
+Ya tú agregalo dependiendo de cómo quieras configurar tus colas.
+Acá puedes ir leyendo cómo se configura.
+Puedes especificar la cantidad de repeticiones, el máximo tiempo de ejecución, entre muchas otras cosas.
+Pero yo quiero dejarlo lo más simple posible.
+Que se ejecute php artisan keyword.
+¿Qué más?
+Todos estos comandos lo vamos a dejar tal cual.
+Y lo último.
+Ah, aquí vamos a cambiarlo.
+El usuario.
+¿Con qué usuario yo quiero conectarme para ejecutar este comando?
+Yo quiero conectarme con el usuario de sitio.
+¿Cuál es el usuario de sitio?
+Es este que se llama facturación web.
+Entonces me dirijo por acá y voy a decir que este es el usuario que se va a encargar de ejecutar el comando.
+Perfecto.
+Y por último quiero modificar este archivo que tenemos acá.
+Aquí nosotros tendríamos que crear un archivo lock.
+¿Qué es un archivo lock?
+En ese archivo va creando registro de todos los procesos que se va ejecutando mi php artisan keyword.
+Por ejemplo, cuando ejecutamos anteriormente, nos salió un mensaje de que se estaba inicializando y que había funcionado correctamente.
+Si existen errores, también los iba a mostrar ahí.
+Muy bien.
+Toda esa información yo quiero que se almacene en un archivo lock.
+Entonces lo que voy a hacer es dirigirme aquí.
+Vamos a seguir en administrador de archivos.
+Y ese archivo lock quiero crearlo acá.
+En la carpeta htdocs, en la carpeta facturación web, en la carpeta compartida charred, en la carpeta storage.
+Y acá tengo una carpeta llamada locks.
+Entonces aquí es donde a mí me gustaría que se cree mi archivo lock.
+Y le voy a dar el mismo nombre que me recomiendo acá.
+Voy a decir añadir un archivo nuevo.
+Y creamos el archivo llamado worker lock.
+Y ahora simplemente sería indicarle dónde se encuentra ese archivo.
+Lo primero es que ingrese mi proyecto.
+No es cierto?
+Ingrese a la carpeta facturación web.p.
+Entonces me dirijo por acá y especifico.
+Ingresa a la carpeta facturación web.p.
+Una vez que estés acá, quiero que ingreses a esa carpeta llamada charred.
+Entonces lo copio.
+Me dirijo por acá.
+Y lo pego.
+Luego de eso, quiero que ingreses a esta carpeta llamada storage.
+Me dirijo por acá.
+Y finalmente quiero que ingreses a la carpeta llamada locks.
+Y listo.
+Entonces, recapitulemos.
+Supervisor lo que va a hacer es mantener ejecutando este comando.
+El comando php artisan qwork.
+Y cómo va a conectarse a mi servidor.
+Va a conectarse a mi servidor como si fuera el usuario facturación web.
+Y todo el proceso que se va realizando tanto de éxito como de fracaso.
+Va a ir quedando almacenado acá.
+En esta carpeta.
+En la carpeta compartida.
+En la carpeta storage, locks.
+Y se llama worker.lock.
+Entonces ahorita lo único que tendríamos que hacer es guardar los cambios.
+Vamos a darle a guardar.
+Si yo le doy guardar, acá me dice.
+Ha sido cambiado un archivo abierto previamente.
+Y me dice si es que quiero volver a subir este archivo al servidor.
+Y en efecto.
+Quiero que se vuelva a subir con todos los cambios que hemos hecho.
+Para verificar que en efecto se ha actualizado.
+Quiero darle nuevamente en abrir.
+Ver editar.
+Voy a abrirlo con el blog de notas.
+Y vemos los cambios que hicimos.
+Voy a darle una última revisada.
+Y aparentemente todo funciona correctamente.
+Y bien.
+Entonces cerremos esto.
+Ahora, que más me indica que debo hacer.
+Ya puedo cerrar esto.
+Quiero verificar acá si puedo ingresar.
+No.
+Por inactividad ya no me deja.
+Y vamos a volver a conectarnos como usuario root.
+Kovash.
+Ingreso como usuario root.
+Muy bien.
+Que más me indica.
+Luego de haber generado este archivo.
+Lo que debo hacer.
+Es especificar al supervisor.
+Que utilice ese archivo.
+Para ejecutar mis keywords.
+Primero vamos a ejecutar esto.
+Vamos a ejecutar este comando.
+Este comando lo que va a hacer.
+Es leer todos esos archivos con extensión.config.
+Que hemos agregado en la carpeta de hace un momento.
+Aquí va a verificar.
+Si es que hemos creado un nuevo archivo.
+Si es que hemos eliminado un archivo.
+Si es que hemos editado.
+Y por ejemplo aquí acaba de detectar.
+Que yo he creado un nuevo archivo.
+Un nuevo programa llamado facturación web.
+Y es nuevo me indica.
+Entonces.
+Lo próximo que vamos a hacer.
+Es pedirle a supervisor.
+Que tome ese valor.
+Ese valor de ese archivo.
+Para agregarlo a la configuración propia de supervisor.
+Para hacer eso.
+Tenemos que pegar el siguiente comando.
+sudo supervisor stl update.
+Y le vamos a dar en enter.
+Y me dice que ya este archivo se agregó al grupo de supervisor.
+Y finalmente tenemos que ejecutar ese proceso.
+Ese programa.
+Para ejecutar este programa.
+Lo que tendríamos que hacer es dirigirnos por acá.
+Pegar este comando sudo supervisor stl start.
+Pero al final.
+Tenemos que colocar el nombre del programa.
+Nuestro programa.
+Le dimos el nombre facturación web.
+Entonces esto mismo tenemos que ejecutar.
+Y al darle enter.
+Es como si estuviéramos dejando corriendo.
+El php artisan keyword.
+Pero todo esto.
+Ya se va a mantener encendido.
+Y me he dado un error.
+El error me da por lo siguiente.
+Yo tengo que hacerlo de la siguiente manera.
+Vamos a copiar todo esto.
+Y vamos a pegarlo por acá.
+Es decir.
+El nombre que debo cambiar.
+Es solamente esta parte.
+Debo decir que quiero generar.
+El programa llamado facturación web.
+Dos puntos y un asterisco.
+Entonces ahora si.
+Me voy a dar acá.
+Y le voy a dar enter.
+Y ahora si inició supervisor.
+Ya se está ejecutando el php artisan keyword.
+En segundo plano.
+Yo perfectamente ya podría cerrar esto.
+Y vamos a comprobarlo.
+A ver.
+Quiero primero dirigirme a jobs.
+Para verificar que no tengo ningún job.
+Acá en cola.
+Y ahora vamos a abrir nuestro.
+Facturación web.tes.
+Y nuestro facturación web.p.
+Quiero abrir este worker log.
+Vemos que está totalmente vacío.
+Todavía no se ha ejecutado ninguna tarea.
+Eso está bien.
+Y.
+Vamos a hacer esto.
+Me dirijo por acá.
+Vamos a limpiar esto.
+Este etiqueta P.
+Quiero limpiarlo.
+Vamos a actualizar nuestro repositorio.
+Y vamos a ver qué ocurre.
+Dirijámonos primero a nuestro git cook.
+Para ver que.
+La respuesta se haya detectado correctamente.
+Me dirijo acá.
+Facturación web.p.
+Nos vamos a setting.
+Web cook.
+Si ha marcado correctamente.
+La última vez que se hizo.
+Un pedido.
+Fue a la 1 y 8.
+Es decir.
+A la hora de hace un minuto.
+Quiero dirigirme acá.
+Mi archivo worker.log.
+Miren acá me salió el primer registro.
+De que está corriendo satisfactoriamente.
+Todavía no termina de ejecutarse.
+Por eso no me sale el segundo mensaje.
+Vamos a esperar un par de segundos más.
+Muy bien.
+Ya pasaron.
+Suficientemente tiempo me parece.
+Si ingreso a worker.log.
+Ahora ya tengo.
+El segundo mensaje.
+Miren se ha demorado 43 segundos.
+En ejecutarse.
+Y si volvemos por acá.
+Y actualizamos.
+En ambos.
+Aquí ya no aparece el arable.
+Y por aquí.
+Tampoco debe aparecer.
+Perfecto.
+Si vamos a nuestras colas.
+Actualizamos.
+Podemos observar que las colas.
+Se han ejecutado correctamente.
+Entonces ya hemos automatizado el proceso.
+Ahora cada vez que queramos.
+Actualizar nuestro proyecto.
+Lo único que tendríamos que hacer es.
+Actualizar el repositorio.
+Y automáticamente se va a actualizar también.
+En mi proyecto de producción.
+Así que por el momento nos quedamos.
+Hasta aquí en este capítulo.

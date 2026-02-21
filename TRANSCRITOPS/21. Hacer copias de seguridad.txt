@@ -1,0 +1,157 @@
+En este capítulo quiero ver cómo nosotros podemos hacer backups de nuestro proyecto en nuestra base de datos
+Lo cual con Cloud Panel es bastante sencillo
+Lo primero que tendríamos que hacer es tener un espacio externo a nuestro servidor que va a ser donde yo puedo almacenar mi
+Mi base de datos
+Por lo general para esto yo suelo trabajar con DigitalOcean
+No con un droplet, sino con algo que se le conoce como Space
+Los Space
+Son una especie de nube donde nosotros vamos a poder subir no sólo nuestro respaldo de la base de datos, sino que vamos a poder subir
+Nuestro los archivos que mostremos en nuestro sitio web, por ejemplo en mi caso
+Todo ésta, imágenes
+Videos, todo lo que muestren en mi sitio web los estoy almacenando ahí
+Porque porque es súper barato, yo pago alrededor de cinco dólares al mes y
+Me permite almacenar hasta un terra, no recuerdo bien, y de igual manera la cantidad de ancho de banda es súper barato
+Y mientras que si lo subiera directamente en mi servidor me costaría un montón
+Entonces yo he creado un Space y ahí subo todos mis archivos y al mismo tiempo
+uso ese espacio para
+generar mis backups
+Muy bien, entonces lo que vamos a hacer en este momento es crear un nuevo Space
+Para crear uno de Space simplemente tenemos que dirigirnos aquí en las opciones de creación y vamos a decir que quiero crear un Space Object Storage
+Le vamos a dar
+clic ahí y tenemos que
+Similar a lo que hicimos para para nuestros droplet, es decir un lugar donde quiero que se genere
+Yo lo voy a dejar en Nueva York
+Por aquí voy a decir que quiero habilitar SDN
+Y vamos a darle un nombre a nuestros droplet, por ejemplo yo le voy a dar el nombre backup
+Coders Free
+Ahora es importante que el nombre que nosotros le asignemos a nuestro Space sea un nombre único
+Porque? Porque este valor que nosotros coloquemos acá es el que va a usar como URL para mostrar su contenido, por ejemplo
+Si yo me dirijo por acá, acá dice Coders Free, ¿por qué? Porque me Space le di ese nombre
+Entonces igual acá, si yo le doy backup Coders Free debe ser único, nadie más tiene que haberlo creado
+Entonces vamos a darle ese nombre
+Acá está lo que les mencionaba, les cobra 5 dólares
+Si gustan vamos a buscar mejor cuánto es para que tengan claro el precio. Precio de
+Space Digital Ocean
+Vamos a ingresar acá
+Me dice que los Space Digital Ocean me cobran 5 dólares por mes, me dan
+250 gigabytes de almacenamiento, me dan un terabyte de transferencia
+En el caso de que superase eso, almacenase más de 250 gigabytes, me cobrarían 0.02
+dólares por gigabyte extra y lo mismo con el
+con el ancho de banda, si hay un ancho de banda mayor a un terabyte por cada 0.01 adicional
+me cobrarían 0.01
+Lo cual me parece súper barato y es una de las opciones más baratas que tenemos en el mercado
+Si lo comparas por ejemplo con Amazon S3, esto es muchísimo más barato
+Entonces esa es la razón por la cual yo trabajo con esto
+Ahora el crédito que te dejé al principio
+con el link te va a servir tanto para crear tus droples como para crear tus Space, cualquier producto que
+adquieras en Digital Ocean vas a poder utilizar ese salto, así que tenlo presente. Muy bien
+Voy a
+crear un espacio nuevo
+y esperamos un momento
+Listo, aquí ya tenemos nuestro Space creado, aquí va a empezar a aparecer todos los archivos que
+vayamos subiendo, pero ahora
+aparte de crear nuestro Space, nosotros tenemos que crear un cliente App
+para que para pasarle esas credenciales aquí a Cloud Panel y pueda lograr subir los archivos a este a este punto
+Entonces ¿Cómo hacemos eso? De la siguiente manera, vayamos a la parte de acá que dice API
+vamos a dirigirnos por acá
+Luego vamos a dirigirnos a este que dice Space Case y vamos a crear una nueva llave
+Por ejemplo yo a este le di el nombre BackupCoderFree entonces
+Ese mismo nombre lo voy a dar a mi llave
+le voy a decir crear Access Case
+Muy bien, aquí me dan dos cosas me van a dar el Access Case que es el que tenemos acá y me van a dar una
+contraseña, esa contraseña sólo te la va a mostrar una única vez, si ahorita refresco la página ya no me la va a
+volver a mostrar, si la pierdes vas a tener que eliminarla y volver a generarla
+Entonces una vez que ya tengo ambos
+vamos a dirigirnos aquí
+Perdón a nuestro a nuestro Cloud Panel y quiero que se vayan a esta que dice área administrativa
+Luego de eso vamos a esta que dice copia de seguridad
+y vamos a especificar un proveedor yo quiero que se suba en el Space de
+DigitalOcean entonces vamos a buscar DigitalOcean Space
+Muy bien ahora simplemente tenemos que darle en continuar y vamos a proporcionar
+Cierta información por ejemplo cada cuánto tiempo queremos que
+se genere la copia de seguridad
+diariamente cada tres horas cada seis horas cada 12 horas eso ya va a depender de que
+tanta cantidad de datos entra y que tan
+relevantes son esos datos para ti, no? Yo para mi caso
+me interesa que se genere una copia de seguridad diariamente porque es suficiente con la información que yo voy a
+subiendo no si por ahí se pierde algún comentario y demás
+me daría igual entonces yo quiero que cada día se haga una copia de seguridad
+Luego de eso puedo especificar a qué hora del día quiero que se ejecute
+Una recomendación sería las dos porque de repente ese proceso vuelve un poco lento tu
+tu aplicación mientras se realiza entonces como las dos casi nadie está conectado sería una buena hora
+que más debo especificar el nombre del espacio
+Cuál vendría a ser el nombre del espacio
+Sería este nombre que yo le especifica acá como backup coder free
+entonces vuelvo por acá y colocamos el nombre del espacio
+Lo siguiente es especificar la zona en la cual yo lo cree seguido de un punto digitalosianspace.com
+con respecto a la zona yo lo cree en nueva york entonces debo colocar
+nic3digitalosian.com voy a copiar esto me dirijo acá y vamos a pegarlo por acá
+¿Qué más?
+Debo especificar una llave de acceso y la llave secreta que fueron las credenciales que copié acá que generé acá
+vamos a generar vamos a copiar el access key lo voy a pegar acá y luego voy a copiar
+la clave secreta me dirijo nuevamente por acá y lo pego
+Vamos a especificar un directorio de almacenamiento yo quiero que lo almacene dentro de una carpeta llamada backups
+y tenemos que especificar cada cuánto tiempo queremos que mantenga esa copia de seguridad si ponemos 7
+significa que cualquier copia de seguridad que tenga más de esos días se va a eliminar y solo
+voy a mantener con las copias de seguridad generada en los últimos 7 días
+Entonces vamos a dejarlo en 7 por aquí podemos colocar si queremos excluir del respaldo a alguna
+alguna carpeta en particular en mi caso no es así yo quiero que todo se suba y entonces simplemente le vamos a dar en guardar
+y ahora se supone que todos los días a las dos de la mañana
+se estaría subiendo mi copia de seguridad pero para probar que en efecto se esté creando la copia de seguridad
+y se está logrando conectar a nuestro space acá me dan un botón que dice crear copia de seguridad
+le voy a dar clic me pregunto si estoy seguro y luego me sale el siguiente mensaje
+la copia de seguridad se iniciará en segundo plano en breve entonces se va a empezar a generar
+yo voy a dejar esto un par de
+minutos hasta que se termine de crear y luego voy a fijarme que tengo en el space
+muy bien ya terminó de ya debería haber terminado de crearse la copia de seguridad
+vamos a dirigirnos aquí a nuestro space en este punto y si yo actualizaría debería aparecer una carpeta llamada backups
+por acá la tenemos en efecto
+y con toda la estructura de mi de mi de mi proyecto
+vamos a dirigirnos aquí a backups quiero empezar a este a esta carpeta
+a esta otra carpeta
+acá está el home está el nombre del proyecto si tuviera más proyectos acá aparecerían tengo un solo sitio web
+facturación web y este es mi
+mi copia de seguridad que tiene un peso de 275 megabytes
+le vamos a dar en descargar y voy a esperar aunque no me está dejando
+voy a ingresar al archivo
+vamos a cambiar los permisos para público
+le doy en actualizar y ahora sí vamos a ingresar acá nuevamente
+copio
+pego
+y no me está dejando ya acá está está iniciando la descarga muy bien vamos a abrir este archivo
+y vamos a descomprimirlo clic derecho extraer todo que lo descargue acá mismo
+no se puede saber
+vamos a ingresar simplemente así como con el explorador de archivos acá lo tenemos
+muy bien acá tenemos dos carpetas una carpeta llamada etc dentro de esa carpeta vamos a poder encontrar la configuración
+de engine x
+si le doy acá en abrir y abrir como blog de notas
+vamos a ver toda la configuración de engine x que habíamos visto anteriormente incluso lo que comentamos
+muy bien
+Podría dirigirme hacia la otra carpeta a la carpeta home dentro de la carpeta home tenemos todo lo que tiene que ver con
+nuestro proyecto tenemos facturación web
+tenemos aquí la carpeta htdocs
+con con todas las implementaciones que hayamos hecho que se mantiene por defecto 3 el current es un acceso directo por eso aparece así
+tenemos la carpeta chart con todas las posibles imágenes que hayamos subido acá lo tenemos
+Perfecto entonces
+todo eso funcionando correctamente y ahora me interesa con respecto a
+a mi base de datos vamos a dirigirnos acá y acá tenemos una carpeta llamada database
+ingreso a mi proyecto facturación web acá lo tenemos y acá tenemos nuestra base de datos generadas
+lo abro como el explorador de archivos ya tenemos el sql
+perfecto
+entonces como vemos
+se ha logrado hacer el backup de todos los archivos que nosotros tenemos juntamente con nuestra base de datos
+ahora como pueden haber visto quiero eliminar un momento esto
+nosotros no vamos a la única lugar donde podemos subir no es en
+digital o cien sino podemos subir en muchos otros por ejemplo en amazon s3
+wasabi dropbox en google drive en
+por medio de sftp
+entonces lo que te recomiendo es que vayas probando no eso sí si escoges uno como amazon s3
+de igual manera tienes que tener tú tu espacio en amazon s3 a pedir de igual manera
+la información sus tus llaves y
+demás
+si hubieras escogido
+lo sé google drive de igual manera te va a pedir información sobre el
+ese servicio no así que si quieres probar con otros te recomiendo que vayas leyendo la documentación de estos proveedores para que veas cómo se
+hace
+sin más eso sería todo por este curso
+espero que te haya gustado y me ayudaría mucho que le des una buena calificación a este curso sin más hasta luego

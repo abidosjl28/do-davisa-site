@@ -1,0 +1,92 @@
+En este capítulo nosotros vamos a ver cómo crear un nuevo sitio web. Para crear
+un nuevo sitio web tenemos que ingresar a nuestro cloud panel, dirigirnos a esta
+opción que dice sitios y vamos a darle clic en añadir sitio. Perfecto. Una vez
+que nos encontramos acá, me pregunta lo siguiente. ¿Qué tipo de sitios te
+gustaría crear? Tenemos varias opciones. De repente queremos crear un sitio en
+WordPress, queremos crear un sitio en PHP, en Node.js, un sitio estático HTML, un sitio
+para Python o un proxy inverso. En nuestro caso, como va a ser una
+aplicación de Laravel, vamos a escoger un sitio en PHP. Muy bien. Acá me va a
+preguntar qué tipo de aplicación estoy creando, genérico o en un
+framework. En mi caso yo lo he creado en Laravel 10, entonces voy a
+escoger Laravel 10. Y vamos a escoger la versión de PHP con la cual
+voy a trabajar. En mi caso yo quiero trabajar con la versión 8.1 ya que es
+la versión con la cual lo creo. Perfecto. Ahora aquí nosotros tenemos
+que colocar el dominio que se va a conectar a este nuevo sitio. En mi caso
+el dominio se llama facturación web.p. Entonces lo coloco acá. Recuerden
+este dominio va a apuntar a este nuevo sitio que estamos creando. Y por
+último lo que nosotros tenemos que hacer es crear un usuario, un
+sitio. Aquí le voy a dejar el nombre en el que me recomendaron. Lo sacó de mi
+dominio. Se va a llamar facturación web y vamos a tener una contraseña. Tú si
+quieres lo puedes cambiar o la contraseña que apareció por defecto.
+Este es un usuario SSH que va a poder conectarse a mi sitio. Y ahora
+simplemente le vamos a dar en crear. Y voy a esperar un momento. Y listo.
+Ya se creó un nuevo sitio. Este sitio está relacionado con el
+dominio facturación web.p. Perfecto. Lo próximo que vamos a hacer es darle
+clic en administrar. Y acá tenemos varias opciones como podemos ver.
+Centrémonos en la parte de configuración. En configuración
+nosotros tenemos un directorio root. ¿Qué es esto del directorio root? El
+directorio root es aquella carpeta que se va a abrir cuando nosotros
+coloquemos en nuestro proyecto facturación web.p. El directorio root
+que han generado es el siguiente. Primero ingresa a una carpeta llamada
+home, que es la que tenemos acá. Luego ingresa al usuario que nosotros
+hemos creado. ¿Qué usuario creamos nosotros? Un usuario llamado facturación
+web. Entonces va a ingresar a ese usuario. Luego ingresa a una carpeta
+llamada htdocs, similar a cham, que se organiza los proyectos en una
+carpeta llamada htdocs. Ingresa al proyecto como tal que va a llevar el
+mismo nombre que mi dominio. Se llama facturación web. Y luego debería
+ingresar a una carpeta public. ¿Por qué? Porque los proyectos de Laravel
+por defecto trabajan en una carpeta public. Entonces por eso está
+apuntando acá. Perfecto. ¿Qué más podemos hacer acá? Por ejemplo podemos
+configurar el usuario del sitio. Si quiere el por defecto de facturación
+web, podemos cambiar la contraseña en el caso de que nos hayamos
+olvidado la contraseña. Y podemos colocar nuestra llave ssh. Esta llave
+ssh va a ser para poder conectarnos como usuarios del sitio a administrar
+nuestro sitio. Esta es diferente que el usuario root. El usuario root es
+para administrar todo el servidor. En cambio este usuario es para
+administrar solo nuestro sitio. No podría administrar otro sitio
+diferente al suyo. Entonces acá me gustaría colocar también nuestra
+llave ssh para poder conectarnos. Ya hemos visto cómo hacerlo. Vamos a
+nuestra consola en git bash y lo que tendría que hacer es copiar esto,
+porque ya sabemos que se ha generado. Le voy a dar en clip, copiar y luego le
+doy en pegar. Le damos en guardar y listo. Ya tenemos nuestra llave ssh
+generada. ¿Qué más podemos hacer acá? Podemos configurar la versión de php,
+podemos aumentar la memoria límite, podemos aumentar cuánto es el tamaño
+máximo que se puede subir, etcétera, etcétera. Por acá si quieres agregar
+alguna configuración adicional a tu archivo .init, lo puedes agregar acá,
+por ejemplo habilitar extensiones y finalmente tenemos la opción de
+eliminar el sitio. Es el caso de que al finalizar quieres eliminar este
+sitio. Perfecto. Muy bien. Y para culminar, nosotros hace un momento hemos
+agregado la llave ssh acá. ¿Para qué la agregamos? Para que desde esta
+computadora podamos conectarnos vía ssh hacia nuestro droplet. ¿Pero qué
+tal si es que tú trabajas con más de una computadora? Y en cada una de las
+computadoras necesitas poder conectarte vía ssh para el droplet,
+porque de repente a veces trabajas en tu trabajo, a veces trabajas en tu
+casa, a veces en la computadora de tu casa, a veces en la laptop y necesitas
+conectarte vía ssh. No hay ningún problema, este vendría a ser mi
+usuario principal, el usuario principal del sitio, pero si necesitas
+agregar más usuarios lo único que tendrías que hacer es dirigirte aquí
+a donde dice ssh y por aquí ir agregando nuevos
+usuarios, una contraseña y su respectiva llave ssh de tantos equipos como tú
+necesites y también si es que necesitarías conectarte vía ftp
+también lo puedes hacer simplemente agregando acá, agregas el nombre de
+usuario y la contraseña y aquí podrías especificar hacia el
+directorio por el cual se puede conectar vía ftp. Por defecto te
+recomiendan que se conecte a tu proyecto, a la carpeta public.
+Muy bien, sin más eso sería todo por este capítulo, en el próximo capítulo
+vamos a ver cómo trabajar con el administrador de archivos, trabajar
+con el administrador de archivos es muy similar a cómo lo estuvimos
+haciendo con nuestro hosting compartidos, simplemente sería ubicar la
+carpeta a la cual debemos subir nuestro proyecto, en este caso sería
+a la carpeta htdocs, a la carpeta facturacionweb.p, acá deberíamos
+subir el archivo comprimido, descomprimirlo y configurarlo
+adecuadamente para que se pueda conectar. Más adelante en los
+próximos capítulos vamos a ver cómo automatizar esto ya que es un
+poco arduo hacer eso, de repente a solo una vez no es tan molestoso
+pero imagínate tener que hacer este proceso cada vez que cambia
+algo en tu web, tendrías que volver a comprimirlo, tendrías que
+volver a dirigirte acá, descomprimirlo y demás, entonces en
+futuros capítulos vamos a ver cómo automatizar este proceso, vamos a
+ver cómo enlazar nuestro repositorio de github con nuestro
+con nuestro vps de tal manera que con el simple hecho de
+actualizar nuestro repositorio también se actualice nuestro
+proyecto, pero eso lo vamos a ver en futuros capítulos.

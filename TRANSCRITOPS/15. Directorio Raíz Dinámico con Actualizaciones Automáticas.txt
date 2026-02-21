@@ -1,0 +1,127 @@
+en el capítulo pasado vimos la configuración de deploy y en este
+capítulo quiero ver cómo se realiza el proceso de display para lo cual vamos
+a hacer lo siguiente quiero abrir la terminal en git bash y vamos a
+conectarnos vía ssh con nuestro usuario de sitio entonces simplemente
+voy a colocar ssh el nombre de nuestro usuario de sitio un arroba y
+la ip de mi servidor lo voy a dar enter y procede a conectarse
+ahora para realizar el proceso de despliegue es tan sencillo como llamar
+a deploy tengo que escribir acá deploy y voy a
+especificar que quiero hacer un despliegue entonces luego escribo deploy
+que más como el proceso de despliegue lo voy a hacer desde un repositorio
+de git hub lo que tengo que decirle es la rama que quiero clonar en mi caso la
+rama que yo quiero clonar es la rama master y luego simplemente sería darle
+enter ojo antes de que hagamos el proceso de despliegue para que no me
+marque ningún error recuerden que nosotros deberíamos
+haber colocado acá en esta carpeta en la carpeta deploy overlays debería
+estar nuestra variable de entorno y debe estar colocado las credenciales de la
+base de datos con la cual voy a esperar conectarme porque porque una vez que
+clone lo que va a hacer va a proceder a ejecutar las migraciones y si no
+puede conectarse con la base de datos me va a marcar un error entonces
+dicho esto vamos a darle enter y vamos a ver qué pasa le voy a enter y
+inicia con el proceso de clonación inicia con el proceso de
+instalación de composer acá está instalando todas las dependencias de
+composer vamos a seguir esperando a ver qué pasa
+por acá inicia con el proceso de migración está ejecutando todas las
+migraciones disponibles optimiza genera los archivos en que va a
+colocar en caché que era una de las tareas que le especificamos
+me ejecuta npm por acá tenemos npm y me ejecuta npm run build acá está
+generando los assets del área del mic y finalmente
+refresca php-fpm ahora que ha hecho esto lo que ha hecho esto es clonar mi
+repositorio ejecutar todos los comandos que le
+he dicho con lo que me ejecuta composer npm y demás y todo eso lo
+ha hecho en esta carpeta en la carpeta htdocs dentro de la carpeta
+actuación web y dentro de esa carpeta llamada releases acá lo tenemos si la
+abrimos vemos la carpeta node módules perfecto
+vemos la carpeta vendor con toda la dependencia de composer por aquí
+perfecto y vamos a ver por aquí nuestra
+variable en torno .mp esta variable en torno no es más que la
+copia que habíamos colocado en la carpeta overlays si lo abrimos es
+exactamente la misma lo mismo que dejamos ahí muy bien no
+obstante si intento abrir mi sitio web por ejemplo le voy a dar aquí en la
+carpeta facturación web me sigue mostrando este texto que dice hello
+worlds y porque me sigue mostrando esto porque recuerden que nosotros
+habíamos que especificado que el directorio root de mi proyecto va a
+no obstante mi proyecto no se está clonando en facturación web acá y en
+la carpeta public sino que está ingresando a una carpeta llamada
+releases está ingresando a otra carpeta adicional con este nombre y
+finalmente acá es la carpeta public a la que debería estar apuntando
+entonces una opción que podríamos hacer es la siguiente podríamos
+decirle que ahora me interesaría que el directorio raíz no sea acá sino que
+ingrese primero a la carpeta releases ingrese a esta carpeta y recién apunte
+a esa carpeta public que es la que tenemos acá pero el problema que si
+hacemos eso es la siguiente si yo vuelvo a ejecutar este comando si me
+dirijo nuevamente por acá disculpen tiempo y una actividad no me deja
+trabajar vamos a volver a ejecutar este comando
+ingreso vuelvo a ejecutar deploy deploy master y lo voy a dar enter
+vamos a ver qué ocurre muy bien ya terminé de ejecutarse y ahora me
+interesaría regresar a mi administrador de archivos refrescar las
+carpetas dándole clic acá y vamos a dar clic nuevamente en realeases
+cuando nosotros volvemos a ejecutar ese comando lo que ocurre es que no se
+reemplaza el despliegue anterior el despliegue anterior sigue acá lo que
+ocurre es que vuelve a clonar mi repositorio se vuelve a instalar con
+poster se vuelve a instalar no es y entonces lo que tendríamos que hacer
+es volver a cambiar el directorio root dirigirnos acá ya no decirle que
+a esta carpeta a primer despliegue sino decirle que apunte a este segundo
+despliegue y si volvemos a ejecutar nuevamente el comando tendríamos que
+pedir que apunte al nuevo despliegue para que para siempre es tener la
+última versión y estar cambiando el directorio root una y otra vez se
+vuelve tedioso es por esa razón que la forma en la cual trabaja deploy es
+la siguiente vamos a actualizar acá los cambios aquí podemos encontrar una
+nueva carpeta una carpeta llamada current esta carpeta no es más que un
+acceso directo y es un acceso directo hacia el último despliegue en este
+caso sería un acceso directo hacia este este que se llama 2023 12 5 15
+26 31 por ejemplo si le doy clic sobre current vemos que en efecto me
+lleva hacia el último despliegue el cual se realizó a las 10 y 26
+entonces teniendo en teniendo claro ese comportamiento lo que nosotros
+tendríamos que hacer es no dirigirnos a la carpeta releases y
+apuntar hacia el último despliegue sino que lo que tenemos que hacer es
+dirigirnos a la carpeta current y una vez que nos encontramos en la
+porque para ver los últimos cambios ingreso a htdocs ingreso a facturación web
+ingreso a la carpeta current entonces mi directorio root va a apuntar a esta
+carpeta y que ingrese a esta carpeta la carpeta pública espero que me deje
+entender current es un acceso directo hacia el último despliegue
+entonces lo que vamos a hacer es dirigirnos acá y especificar mi
+directorio root va a ser facturación web punto pep slash current slash public
+entonces si guardamos los cambios le damos en guardar y ahora nos dirigimos
+acá vamos a ver que ahora sí está apuntando al último despliegue y para
+ver que en efecto tenemos los últimos cambios quiero hacer lo
+siguiente quiero dirigirme por aquí a mi
+vamos a dirigirnos a la carpeta welcome a la vista welcome y por aquí
+en alguna parte vamos a colocar una etiqueta p que diga no sé prueba vamos
+a ingresar en local hacia este a este proyecto voy a encender cham voy a
+ver qué ocurre y miren acá puedo visualizar este que dice prueba vamos a
+agrandarlo un poco para que lo vea mejor entonces yo quiero actualizar mi
+proyecto quiero utilizar mi repositorio voy a dirigirme por acá y at guión a
+y comit guión m vamos a darle el nombre actualización
+y push origin master le damos enter con eso actualizamos el repositorio y
+ahora para verlo reflejado acá en mi servidor lo único que tendría que hacer
+es generar un nuevo despliegue como genera un nuevo despliegue
+ingresando nuevamente conectándonos por ssh como usuario de sitio y
+ejecutando el comando deploy deploy master y dándole enter entonces va a
+los nuevos cambios que hayamos hecho y como consecuencia lo veríamos
+reflejado en nuestro proyecto en producción vamos a esperar un par de
+segundos más a que termine este proceso y listo ya terminó de hacer el
+despliegue si ahora volvemos por acá me encuentro
+mi proyecto en producción le doy en actualizar y miren si subo acá
+aparece el valor de prueba entonces cada vez que actualizamos nuestro
+proyecto en nuestro en nuestro repositorio tendríamos que hacer un
+nuevo despliegue para ver los cambios ahora quizás algunos se pregunten
+si cada vez que hago un cambio se va a producir un despliegue eso no haría
+que se llene de carpetas aquí en en releases y las respuestas no
+la forma en la cual trabaja deploy es que me mantiene sólo los tres
+últimos despliegue por ejemplo ahorita yo tengo tres si vuelvo a ejecutar otro
+deploy se va a eliminar este acá que es el más el último que el primero que
+realicé no por ejemplo para que lo vean yo vuelvo a generar un deploy y
+vamos a ver que sólo se van a mantener los tres últimos y por qué
+mantiene los tres porque puede ser que en determinado momento tú quieras
+revertir los cambios hacia el último cambio que tenías porque de
+ocurrió un error o algo por el estilo entonces por eso trata de
+mantener los tres últimos los anteriores a eso lo va a eliminando
+vamos a esperar un momento listo ya terminó el despliegue y ahora
+volvamos acá al administrador de archivos
+nos vamos a la carpeta htdocs nos vamos a la carpeta facturación web
+releases y vemos que sólo hay tres eso lo que le mencionaba sólo
+mantiene tres y de tal manera que no se va a llenar esa carpeta
+ya hemos visto cómo hacer el display en el próximo capítulo quiero hablar
+sobre otra carpeta que tenemos acá que se llama charet y esa carpeta es un
+módulo compartido pero voy a explicarlo mejor en el próximo capítulo

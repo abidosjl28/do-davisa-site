@@ -1,0 +1,52 @@
+Quiero dirigirme un momento al administrador de archivos y vamos a
+dirigirnos a la sección de Deploy y abrimos los archivos de configuración
+config.iml. Aquí quiero agregar un paso adicional, tenemos todo lo
+necesario para funcionar Laravel, va a instalar composer y demás, pero me
+está faltando que compile mis assets, ¿cómo compilado nuestros assets? a
+Pero para ejecutar npm roombuild, primero tendríamos que instalar npm, ejecutar npm install y luego de
+ejecutar npm, ejecutar npm roombuild para que compile todos los assets y no me
+salga el error de falta el archivo manifiesto. Ahora, ¿cuál es el problema
+con esto? Que nosotros en nuestro servidor no tenemos instalado npm y
+Para probarlo, vamos a dirigirnos un momento a nuestro terminal de git bash y
+vamos a ingresar como usuario root. Aquí voy a ejecutar primero un npm version
+y me dice que no existe el comando de npm que no tenemos instalado y si
+coloco node version me dice exactamente lo mismo. Muy bien, entonces
+Quiero instalarlo, para instalar node.js vamos a hacerlo a través de su página
+oficial, vamos a dirigirnos a node.js y vamos a
+venir a las opciones de descarga, no vamos a escoger ninguno de estos
+porque me va a descargar para windows, quiero dirigirme a este que dice
+otras opciones de descarga, una vez que estamos acá quiero escoger este
+que dice instalar node.js vía paquetes y vamos a buscar la opción que
+dice ubuntu, dice devian y ubuntu, le damos clic y estando acá me sale la opción
+para dirigirme a una página en la cual me dice los pasos para instalar
+node.js, listo. Como lo voy a instalar me indica, tenemos que
+bajar y me dice que tengo que instalarlo de la siguiente manera
+Primero debo ejecutar este comando, vamos a copiarlo, me dirijo hacia
+hacia la consola, la terminal donde he iniciado sesión como usuario root y
+vamos a pegar esto, aparentemente mucho tiempo y inactividad, voy a tener
+que cerrarlo y volver a abrirlo, a abrir la terminal o acá tengo otro
+creo, ese es el que está abierto recientemente, entonces acá lo voy a
+pegar y le vamos a dar enter, estoy como usuario root, recuerden, y se empieza a
+descargar, vamos a bajar, lo próximo que me indica es que debo ejecutar
+esto, con esto especifico la versión de node.js que quiero instalar
+entonces vamos a copiarlo, vuelvo acá, voy a esperar que termine la
+descarga, ya está, vamos a limpiarlo y vamos a pegar este de acá y de igual
+manera le doy enter, listo, esa parte me indica que es opcional, esto no lo voy a
+hacer y lo último que me indica es que debo ejecutar este comando, nuevamente
+copiamos, nos dirigimos por acá y pegamos y ejecutamos
+vamos a esperar un momento y vamos a ver, si ahora yo ejecuto node version
+por acá me debería decir la versión de node que yo tengo, v20 y si ejecuto
+npm version para ver, me dice que la versión de npm que tengo instalado es
+la versión 10.2.3, entonces ya tengo instalado ambos, voy a cerrar
+esto, lo voy a dar en ok y ahora sí podría correr también estos comandos que
+entonces recapitulemos, cuando se clone mi proyecto en mi servidor, va a instalar
+todas las dependencias de composer, va a ejecutar las migraciones en el caso
+de que existan, va a ejecutar este comando php artisan optimis, que lo que
+hace es poner en cache algunos archivos como vistas, configuración y
+otras cosas, va a resetear los que de ser necesario, de estar corriéndolo, me
+dice npm run build, le va a dar permisos a ciertas carpetas, a las carpetas donde
+donde lo clona, ahí le va a dar esos permisos y vamos a
+descomentar esto, que lo que hace es purgar la cache, dice, vamos a dejarlo
+así y por último resetear php fpm, listo
+entonces le damos guardar y ya tenemos todo listo, en el próximo
+capítulo vamos a ver cómo se produce el deploy

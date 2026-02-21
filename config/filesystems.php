@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK', 'spaces'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,6 +56,15 @@ return [
             'throw' => false,
         ],
 
+        'spaces' => [
+            'driver' => 's3',
+            'key' => env('DO_SPACES_KEY'),
+            'secret' => env('DO_SPACE_SECRET'),
+            'region' => env('DO_SPACES_REGION'),
+            'bucket' => env('DO_SPACES_BUCKET'),
+            'url' => env('DO_URL'),
+            'endpoint' => env('DO_SPACES_ENDPOINT'),
+        ],
     ],
 
     /*
